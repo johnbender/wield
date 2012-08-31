@@ -6,6 +6,7 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg: '<json:package.json>',
+
 		meta: {
 			banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
 				'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -16,15 +17,15 @@ module.exports = function(grunt) {
 
 		concat: {
 			dist: {
-				src: ['<banner:meta.banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
-				dest: 'dist/<%= pkg.name %>.js'
+				src: ['<banner:meta.banner>', 'compiled/wield.compiled.js' ],
+				dest: 'compiled/wield.js'
 			}
 		},
 
 		min: {
 			dist: {
-				src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
-				dest: 'dist/<%= pkg.name %>.min.js'
+				src: ['<banner:meta.banner>', '<config:concat.dist.dest>', 'compiled/wield.js'],
+				dest: 'compiled/<%= pkg.name %>.min.js'
 			}
 		},
 
@@ -66,7 +67,7 @@ module.exports = function(grunt) {
 		requirejs: {
 			baseUrl: 'src',
 			name: 'wield',
-			out: "compiled/wield.compiled.js",
+			out: 'compiled/wield.compiled.js',
 			wrap: {
 				startFile: 'build/wrap.start',
 				endFile: 'build/wrap.end'
@@ -87,6 +88,7 @@ module.exports = function(grunt) {
 		requirejs.optimize( require );
 	});
 
+	grunt.registerTask( 'build', 'compile concat min' );
 
 	// Default task.
 	grunt.registerTask('default', 'lint qunit concat min');
