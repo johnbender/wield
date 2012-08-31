@@ -24,7 +24,7 @@ The core of the library is a lightweight object wrapper for DOM elements. The go
 Samples of stand alone use:
 
 ```javascript
-var div = new Wield.DOM( document.getElementByName("div") ),
+var div = new Wield.Dom( document.getElementByName("div") ),
 	span = document.createElement( "span" );
 
 div.append( span ); // <div><span></span></div>
