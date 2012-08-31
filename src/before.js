@@ -1,7 +1,13 @@
-define( "wield.dom.before", [ "wield.dom" ], function( dom ) {
-	dom.prototype.before = function( before, el ) {
+//>>excludeStart("exclude", pragmas.exclude);
+define([ "wield.dom" ], function( dom ) {
+//>>excludeEnd("exclude");
+
+	dom.before = function( before, el ) {
 		var e = el || this.e;
 
 		e.parentNode.insertBefore( before, e );
 	};
+
+//>>excludeStart("exclude", pragmas.exclude);
 });
+//>>excludeEnd("exclude");
