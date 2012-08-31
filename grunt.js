@@ -83,10 +83,6 @@ module.exports = function(grunt) {
 				baseUrl: 'src',
 				name: 'jquery',
 				out: 'compiled/wield.jquery.js',
-				wrap: {
-					startFile: 'build/wrap.start',
-					endFile: 'build/wrap.end'
-				},
 				pragmasOnSave: { exclude: true },
 				findNestedDependencies: true,
 				skipModuleInsertion: true,
