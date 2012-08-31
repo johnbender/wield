@@ -1,5 +1,5 @@
 (function( Wield ) {
-  module( 'Wield.Dom.prototype.append' );
+	module( 'Wield.Dom.prototype.append' );
 
 	test( "append works", function() {
 		var fixture = new Wield.Dom( document.getElementById("qunit-fixture") );
