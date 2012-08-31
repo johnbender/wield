@@ -3,65 +3,65 @@ var requirejs = require( 'requirejs' );
 /*global module:false*/
 module.exports = function(grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
-    pkg: '<json:package.json>',
-    meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
-    },
+	// Project configuration.
+	grunt.initConfig({
+		pkg: '<json:package.json>',
+		meta: {
+			banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+				'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+				'<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
+				'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
+				' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
+		},
 
-    concat: {
-      dist: {
-        src: ['<banner:meta.banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
-        dest: 'dist/<%= pkg.name %>.js'
-      }
-    },
+		concat: {
+			dist: {
+				src: ['<banner:meta.banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
+				dest: 'dist/<%= pkg.name %>.js'
+			}
+		},
 
-    min: {
-      dist: {
-        src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
-        dest: 'dist/<%= pkg.name %>.min.js'
-      }
-    },
+		min: {
+			dist: {
+				src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
+				dest: 'dist/<%= pkg.name %>.min.js'
+			}
+		},
 
-    qunit: {
-      files: ['test/**/*.html']
-    },
+		qunit: {
+			files: ['test/**/*.html']
+		},
 
-    lint: {
-      files: ['grunt.js', 'src/**/*.js']
-    },
+		lint: {
+			files: ['grunt.js', 'src/**/*.js']
+		},
 
-    watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint qunit'
-    },
+		watch: {
+			files: '<config:lint.files>',
+			tasks: 'lint qunit'
+		},
 
-    jshint: {
+		jshint: {
 
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        browser: true
-      },
+			options: {
+				curly: true,
+				eqeqeq: true,
+				immed: true,
+				latedef: true,
+				newcap: true,
+				noarg: true,
+				sub: true,
+				undef: true,
+				boss: true,
+				eqnull: true,
+				browser: true
+			},
 
-      globals: {
+			globals: {
 				define: true,
 				require: true
-      }
-    },
+			}
+		},
 
 		requirejs: {
 			baseUrl: 'src',
@@ -77,8 +77,8 @@ module.exports = function(grunt) {
 			optimize: 'none'
 		},
 
-    uglify: {}
-  });
+		uglify: {}
+	});
 
 	grunt.registerTask( 'compile', function() {
 		var require = grunt.config.get( 'requirejs' );
@@ -88,6 +88,6 @@ module.exports = function(grunt) {
 	});
 
 
-  // Default task.
-  grunt.registerTask('default', 'lint qunit concat min');
+	// Default task.
+	grunt.registerTask('default', 'lint qunit concat min');
 };
