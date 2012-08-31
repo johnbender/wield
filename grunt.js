@@ -65,6 +65,7 @@ module.exports = function(grunt) {
 		},
 
 		requirejs: {
+			default: {
 			baseUrl: 'src',
 			name: 'wield',
 			out: 'compiled/wield.compiled.js',
@@ -76,6 +77,21 @@ module.exports = function(grunt) {
 			findNestedDependencies: true,
 			skipModuleInsertion: true,
 			optimize: 'none'
+				},
+
+			jquery: {
+				baseUrl: 'src',
+				name: 'jquery',
+				out: 'compiled/wield.jquery.js',
+				wrap: {
+					startFile: 'build/wrap.start',
+					endFile: 'build/wrap.end'
+				},
+				pragmasOnSave: { exclude: true },
+				findNestedDependencies: true,
+				skipModuleInsertion: true,
+				optimize: 'none'
+			}
 		},
 
 		uglify: {}
@@ -85,7 +101,8 @@ module.exports = function(grunt) {
 		var require = grunt.config.get( 'requirejs' );
 
 		// pull the includes together using require js
-		requirejs.optimize( require );
+		requirejs.optimize( require.default );
+		requirejs.optimize( require.jquery );
 	});
 
 	grunt.registerTask( 'build', 'compile concat min' );
