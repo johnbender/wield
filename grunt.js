@@ -70,8 +70,8 @@ module.exports = function(grunt) {
 			name: 'wield',
 			out: 'compiled/wield.compiled.js',
 			wrap: {
-				startFile: 'build/wrap.start',
-				endFile: 'build/wrap.end'
+				startFile: 'build/start.js',
+				endFile: 'build/end.js'
 			},
 			pragmasOnSave: { exclude: true },
 			findNestedDependencies: true,
@@ -83,6 +83,10 @@ module.exports = function(grunt) {
 				baseUrl: 'src',
 				name: 'jquery',
 				out: 'compiled/wield.jquery.js',
+				wrap: {
+					startFile: 'build/start.jquery.js',
+					endFile: 'build/start.jquery.js'
+				},
 				pragmasOnSave: { exclude: true },
 				findNestedDependencies: true,
 				skipModuleInsertion: true,
