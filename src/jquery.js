@@ -3,7 +3,8 @@ define( "wield.jquery", ["core"], function() {
 	require( ["dom"],function() {
 		require( ["methods/methods"], function() {
 //>>excludeEnd("exclude");
-	jQuery.dom = jQuery.extend( jQuery.dom, dom );
+			/*global jQuery, dom*/
+			jQuery.dom = jQuery.extend( jQuery.dom, dom );
 //>>excludeStart("exclude", pragmas.exclude);
 		});
 	});
