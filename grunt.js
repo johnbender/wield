@@ -85,7 +85,7 @@ module.exports = function(grunt) {
 				out: 'compiled/wield.jquery.js',
 				wrap: {
 					startFile: 'build/start.jquery.js',
-					endFile: 'build/start.jquery.js'
+					endFile: 'build/end.jquery.js'
 				},
 				pragmasOnSave: { exclude: true },
 				findNestedDependencies: true,
