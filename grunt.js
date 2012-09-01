@@ -43,7 +43,6 @@ module.exports = function(grunt) {
 		},
 
 		jshint: {
-
 			options: {
 				curly: true,
 				eqeqeq: true,
@@ -65,19 +64,19 @@ module.exports = function(grunt) {
 		},
 
 		requirejs: {
-			default: {
-			baseUrl: 'src',
-			name: 'wield',
-			out: 'compiled/wield.compiled.js',
-			wrap: {
-				startFile: 'build/start.js',
-				endFile: 'build/end.js'
-			},
-			pragmasOnSave: { exclude: true },
-			findNestedDependencies: true,
-			skipModuleInsertion: true,
-			optimize: 'none'
+			main: {
+				baseUrl: 'src',
+				name: 'wield',
+				out: 'compiled/wield.compiled.js',
+				wrap: {
+					startFile: 'build/start.js',
+					endFile: 'build/end.js'
 				},
+				pragmasOnSave: { exclude: true },
+				findNestedDependencies: true,
+				skipModuleInsertion: true,
+				optimize: 'none'
+			},
 
 			jquery: {
 				baseUrl: 'src',
@@ -101,7 +100,7 @@ module.exports = function(grunt) {
 		var require = grunt.config.get( 'requirejs' );
 
 		// pull the includes together using require js
-		requirejs.optimize( require.default );
+		requirejs.optimize( require.main );
 		requirejs.optimize( require.jquery );
 	});
 
