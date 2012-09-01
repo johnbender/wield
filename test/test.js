@@ -30,8 +30,8 @@
 		equal( fixture.childNodes.length, 0, "the fixture is empty" );
 
 		Wield.Dom.prototype.append(
-			document.createElement("span"),
-			fixture
+			fixture,
+			document.createElement("span")
 		);
 
 		equal( fixture.childNodes.length, 1, "the fixture has one child" );
