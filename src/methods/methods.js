@@ -1,9 +1,9 @@
 //>>excludeStart("exclude", pragmas.exclude);
 define( "methods", function() {
 	require([
-		"./after",
-		"./append",
-		"./before"
+		"methods/after",
+		"methods/append",
+		"methods/before"
 	]);
 });
 //>>excludeEnd("exclude");
