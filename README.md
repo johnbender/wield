@@ -50,7 +50,7 @@ fixture.remove();
 Wield.Dom.prototype.remove( document.getElementById("foo") );
 ```
 
-For methods that accept at least one argument, `Wield.Dom` methods will accept either DOM or `Wield.Dom` objects.
+For methods that accept at least one argument, `Wield.Dom` methods will accept either DOM or `Wield.Dom` objects when invoked with an object receiver and DOM elements when invoked as a function.
 
 ```javascript
 var fixture = new Wield.Dom( document.getElementById("foo") );
