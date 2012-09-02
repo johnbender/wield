@@ -55,6 +55,10 @@ For methods that accept at least one argument, `Wield.Dom` methods will accept e
 ```javascript
 var fixture = new Wield.Dom( document.getElementById("foo") );
 
+fixture.append( document.createElement("span") );
+
+// or ...
+
 fixture.append( new Wield.Dom(document.createElement("span")) );
 
 // or ...
