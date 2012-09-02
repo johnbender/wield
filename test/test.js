@@ -5,14 +5,14 @@
 		test( "find works", function() {
 			var fixture = Wield.Dom.find( "#qunit-fixture" );
 
-			equal( fixture.e.id, "qunit-fixture", "querySelector is used" );
+			equal( fixture.element.id, "qunit-fixture", "querySelector is used" );
 		});
 
 		test( "find works when invoked standalone", function() {
 			var $ = Wield.Dom.find,
 				fixture = $( "#qunit-fixture" );
 
-			equal( fixture.e.id, "qunit-fixture", "querySelector is used" );
+			equal( fixture.element.id, "qunit-fixture", "querySelector is used" );
 		});
 	}
 
@@ -31,11 +31,11 @@
 	test( "append works", function() {
 		var fixture = new Wield.Dom( document.getElementById("append") );
 
-		equal( fixture.e.childNodes.length, 0, "the fixture is empty" );
+		equal( fixture.element.childNodes.length, 0, "the fixture is empty" );
 
 		fixture.append( document.createElement("span") );
 
-		equal( fixture.e.childNodes.length, 1, "the fixture has one child" );
+		equal( fixture.element.childNodes.length, 1, "the fixture has one child" );
 	});
 
 	test( "append is a noop for anything not Node.ELEMENT_NODE || Node.DOCUMENT_FRAGMENT_NODE", function() {
@@ -70,22 +70,22 @@
 		var fixture = new Wield.Dom( document.getElementById("wrap") ),
 			wrapper = document.getElementById( "wrapper" );
 
-		equal( fixture.e.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
+		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 
 		fixture.wrap( wrapper );
 
-		equal( fixture.e.parentNode.id, "wrapper", "the fixture is wrapped" );
+		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
 	});
 
 	test( "wrap works as a standalone function", function() {
 		var fixture = new Wield.Dom( document.getElementById("wrap") ),
 			wrapper = document.getElementById( "wrapper" );
 
-		equal( fixture.e.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
+		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 
-		Wield.Dom.prototype.wrap( fixture.e, wrapper );
+		Wield.Dom.prototype.wrap( fixture.element, wrapper );
 
-		equal( fixture.e.parentNode.id, "wrapper", "the fixture is wrapped" );
+		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
 	});
 
 	test( "wrap uses innermost child of the wrapper", function() {
@@ -94,11 +94,11 @@
 
 		wrapper.append( document.createElement("span") );
 
-		equal( fixture.e.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
+		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 
-		fixture.wrap( wrapper.e );
+		fixture.wrap( wrapper.element );
 
-		equal( fixture.e.parentNode.id, "", "the fixture is wrapped" );
-		equal( fixture.e.parentNode.nodeName, "SPAN", "the fixture is wrapped" );
+		equal( fixture.element.parentNode.id, "", "the fixture is wrapped" );
+		equal( fixture.element.parentNode.nodeName, "SPAN", "the fixture is wrapped" );
 	});
 }( window.Wield ));

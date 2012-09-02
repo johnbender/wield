@@ -7,7 +7,7 @@ define([ "wield.dom" ], function( dom ) {
 		//       is defined we ignore the object receiver, otherwise
 		//       we use the first argument as the additive dom element
 		//       and the object receiver's `e` property
-		var e = add ? el : (add = el, this.e);
+		var e = add ? el : (add = el, this._e);
 
 		if ( e.nodeType === 1 || e.nodeType === 11 ) {
 			e.insertBefore( add, e.firstChild );

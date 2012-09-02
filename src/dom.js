@@ -3,7 +3,7 @@ define( "wield.dom", [ "core" ], function( Wield ) {
 //>>excludeEnd("exclude");
 
 	Wield.Dom = function Dom( e ){
-		this.e = e;
+		this._e = this.element = e;
 	};
 
 	var dom = Wield.Dom.prototype = {};
