@@ -6,7 +6,6 @@ define( "wield.dom.find", [ "dom" ], function() {
 		// If a finder has been defined on Wield.Dom
 		// use it with the selector or throw and exception
 		if( Wield.Dom.finder ){
-
 			// construct a new Wield.Dom object using the element
 			// retrieved with the selector
 			return new Wield.Dom( Wield.Dom.finder(selector) );
@@ -16,7 +15,7 @@ define( "wield.dom.find", [ "dom" ], function() {
 	};
 
 	// Default to query selector where it exists
-	if( document.querySelector ){
+	if( document.querySelector && !Wield.Dom.finder ){
 		Wield.Dom.finder = function( selector ) {
 			return document.querySelector( selector );
 		};
