@@ -142,4 +142,16 @@
 
 		equal( document.getElementById("remove"), null, "the fixture is gone" );
 	});
+
+	test( "remove is a noop withiout a parent node", function() {
+		expect( 0 );
+		
+		var fixture = new Wield.Dom({
+			parentNode: null
+		});
+
+		// If `e.parentNode.removeChild` is called it'll throw an exception
+		// not an amazing test :/
+		fixture.remove();
+	});
 }( window.Wield ));
