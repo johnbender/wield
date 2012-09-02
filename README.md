@@ -55,7 +55,7 @@ For methods that require at least one argument, it seems sane that the Object in
 ```javascript
 var fixture = Wield.Dom( document.getElementById("foo") );
 
-fixture.append( Wield.Dom( document.createElement("span") );
+fixture.append( Wield.Dom(document.createElement("span")) );
 
 // or ...
 
