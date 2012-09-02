@@ -50,7 +50,7 @@ fixture.remove();
 Wield.Dom.prototype.remove( document.getElementById("foo") );
 ```
 
-For methods that require at least one argument, it seems sane that the Object invocation would expect another Wield.Dom wrapped element where the direct invocation would be with a vanilla DOM objects. Eg:
+For methods that accept at least one argument, `Wield.Dom` methods will accept either DOM or `Wield.Dom` objects.
 
 ```javascript
 var fixture = new Wield.Dom( document.getElementById("foo") );
@@ -64,8 +64,6 @@ Wield.Dom.prototype.append(
   document.createElement("span")
 );
 ```
-
-This makes the case for Wield.Dom being a lightweight proxy for `document.querySelector`. Further thought required.
 
 ### Wield.Dom.find
 
