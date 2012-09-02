@@ -41,7 +41,7 @@ div.append( span ).empty().wrap( span );
 In the interest of facilitating testing with the jquery core test suite each of the manipulation methods can be invoked on a instance of the Dom object constructor and as a standalone function on the prototype. Eg:
 
 ```javascript
-var fixture = Wield.Dom( document.getElementById("foo") );
+var fixture = new Wield.Dom( document.getElementById("foo") );
 
 fixture.remove();
 
@@ -53,9 +53,9 @@ Wield.Dom.prototype.remove( document.getElementById("foo") );
 For methods that require at least one argument, it seems sane that the Object invocation would expect another Wield.Dom wrapped element where the direct invocation would be with a vanilla DOM objects. Eg:
 
 ```javascript
-var fixture = Wield.Dom( document.getElementById("foo") );
+var fixture = new Wield.Dom( document.getElementById("foo") );
 
-fixture.append( Wield.Dom(document.createElement("span")) );
+fixture.append( new Wield.Dom(document.createElement("span")) );
 
 // or ...
 
@@ -67,6 +67,24 @@ Wield.Dom.prototype.append(
 
 This makes the case for Wield.Dom being a lightweight proxy for `document.querySelector`. Further thought required.
 
+### Wield.Dom.find
+
+By defining the `Wield.Dom.finder` function (which uses `querySelector` by default in browsers that [support](http://caniuse.com/queryselector) it), the user can simplify `Wield.Dom` object creation, Eg:
+
+```javascript
+var fixture = Wield.Dom.find( "#foo" );
+
+fixture.remove();
+```
+
+Alternatively you could use [sizzle](http://sizzlejs.com) for the finder function, eg:
+
+```javascript
+Wield.Dom.finder = window.Sizzle;
+var fixture = Wield.Dom.find( ":not([that='crazy'])" );
+
+fixture.remove();
+```
 
 ## Collections
 
