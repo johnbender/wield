@@ -24,8 +24,6 @@
 		});
 	});
 
-	module( "new Wield.Dom" );
-
 	module( "Wield.Dom.prototype.append" );
 
 	test( "append works", function() {
@@ -121,5 +119,27 @@
 
 		equal( fixture.element.parentNode.id, "", "the fixture is wrapped" );
 		equal( fixture.element.parentNode.nodeName, "SPAN", "the fixture is wrapped" );
+	});
+
+	module( "Wield.Dom.prototype.append" );
+
+	test( "remove works", function() {
+		var fixture = new Wield.Dom( document.getElementById("remove") );
+
+		ok( document.getElementById("remove") !== null, "the fixture is present" );
+
+		fixture.remove();
+
+		equal( document.getElementById("remove"), null, "the fixture is gone" );
+	});
+
+	test( "remove works as a standalone function", function() {
+		var fixture = new Wield.Dom( document.getElementById("remove") );
+
+		ok( document.getElementById("remove") !== null, "the fixture is present" );
+
+		Wield.Dom.prototype.remove( fixture.element );
+
+		equal( document.getElementById("remove"), null, "the fixture is gone" );
 	});
 }( window.Wield ));
