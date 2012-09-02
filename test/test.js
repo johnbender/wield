@@ -7,6 +7,13 @@
 
 			equal( fixture.e.id, "qunit-fixture", "querySelector is used" );
 		});
+
+		test( "find works when invoked standalone", function() {
+			var $ = Wield.Dom.find,
+				fixture = $( "#qunit-fixture" );
+
+			equal( fixture.e.id, "qunit-fixture", "querySelector is used" );
+		});
 	}
 
 	test( "raises and exception when no finder is defined", function() {

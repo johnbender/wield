@@ -3,15 +3,13 @@ define( "wield.dom.find", [ "dom" ], function() {
 //>>excludeEnd("exclude");
 
 	Wield.Dom.find = function( selector ) {
-		var Dom = this;
-
 		// If a finder has been defined on Wield.Dom
 		// use it with the selector or throw and exception
-		if( Dom.finder ){
+		if( Wield.Dom.finder ){
 
 			// construct a new Wield.Dom object using the element
-			// retrieved with the selectore
-			return new Dom( Dom.finder(selector) );
+			// retrieved with the selector
+			return new Wield.Dom( Wield.Dom.finder(selector) );
 		} else {
 			throw "Wield.Dom.finder not defined";
 		}
