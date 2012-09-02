@@ -134,11 +134,11 @@
 	});
 
 	test( "remove works as a standalone function", function() {
-		var fixture = new Wield.Dom( document.getElementById("remove") );
+		var fixture = document.getElementById("remove");
 
 		ok( document.getElementById("remove") !== null, "the fixture is present" );
 
-		Wield.Dom.prototype.remove( fixture.element );
+		Wield.Dom.prototype.remove( fixture );
 
 		equal( document.getElementById("remove"), null, "the fixture is gone" );
 	});
