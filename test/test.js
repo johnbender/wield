@@ -38,6 +38,16 @@
 		equal( fixture.element.childNodes.length, 1, "the fixture has one child" );
 	});
 
+	test( "append with object receiver works with wield objects", function() {
+		var fixture = new Wield.Dom( document.getElementById("append") );
+
+		equal( fixture.element.childNodes.length, 0, "the fixture is empty" );
+
+		fixture.append( new Wield.Dom(document.createElement("span")) );
+
+		equal( fixture.element.childNodes.length, 1, "the fixture has one child" );
+	});
+
 	test( "append is a noop for anything not Node.ELEMENT_NODE || Node.DOCUMENT_FRAGMENT_NODE", function() {
 		expect( 0 );
 
@@ -48,7 +58,7 @@
 			}
 		});
 
-		textNode.append();
+		textNode.append( document.createElement("span") );
 	});
 
 	test( "append works as a standalone function", function() {
@@ -69,6 +79,17 @@
 	test( "wrap works", function() {
 		var fixture = new Wield.Dom( document.getElementById("wrap") ),
 			wrapper = document.getElementById( "wrapper" );
+
+		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
+
+		fixture.wrap( wrapper );
+
+		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
+	});
+
+	test( "wrap with object receiver works with wield objects", function() {
+		var fixture = new Wield.Dom( document.getElementById("wrap") ),
+			wrapper = new Wield.Dom( document.getElementById("wrapper") );
 
 		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 
