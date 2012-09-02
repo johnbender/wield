@@ -8,7 +8,7 @@ define( "wield.dom", [ "core" ], function( Wield ) {
 
 	var dom = Wield.Dom.prototype = {};
 
-	dom.args = function( add ) {
+	dom.toElem = function( add ) {
 		if ( add._e ) {
 			return add._e;
 		}
