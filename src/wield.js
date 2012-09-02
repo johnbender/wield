@@ -2,7 +2,7 @@
 //>>group: exclude
 define( "wield", ["core"], function() {
 	require(["dom"], function() {
-		require(["methods/methods"]);
+		require(["find", "methods/methods"]);
 	});
 });
 //>>excludeEnd("exclude");

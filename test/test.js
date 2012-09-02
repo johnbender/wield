@@ -1,5 +1,25 @@
 (function( Wield ) {
-	module( 'Wield.Dom.prototype.append' );
+	module( "Wield.Dom.find" );
+
+	if( document.querySelector ) {
+		test( "find works", function() {
+			var fixture = Wield.Dom.find( "#qunit-fixture" );
+
+			equal( fixture.e.id, "qunit-fixture", "querySelector is used" );
+		});
+	}
+
+	test( "raises and exception when no finder is defined", function() {
+		Wield.Dom.finder = undefined;
+
+		throws(function() {
+			Wield.Dom.find( "foo" );
+		});
+	});
+
+	module( "new Wield.Dom" );
+
+	module( "Wield.Dom.prototype.append" );
 
 	test( "append works", function() {
 		var fixture = new Wield.Dom( document.getElementById("append") );
@@ -11,7 +31,7 @@
 		equal( fixture.e.childNodes.length, 1, "the fixture has one child" );
 	});
 
-	test( "append is a noop Node.ELEMENT_NODE || Node.DOCUMENT_FRAGMENT_NODE", function() {
+	test( "append is a noop for anything not Node.ELEMENT_NODE || Node.DOCUMENT_FRAGMENT_NODE", function() {
 		expect( 0 );
 
 		var textNode = new Wield.Dom({
@@ -37,7 +57,7 @@
 		equal( fixture.childNodes.length, 1, "the fixture has one child" );
 	});
 
-	module( 'Wield.Dom.prototype.wrap' );
+	module( "Wield.Dom.prototype.wrap" );
 
 	test( "wrap works", function() {
 		var fixture = new Wield.Dom( document.getElementById("wrap") ),
