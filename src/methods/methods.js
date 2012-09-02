@@ -3,7 +3,8 @@ define( "methods", function() {
 	require([
 		"methods/after",
 		"methods/append",
-		"methods/before"
+		"methods/before",
+		"methods/wrap"
 	]);
 });
 //>>excludeEnd("exclude");

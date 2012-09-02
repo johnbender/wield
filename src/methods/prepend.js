@@ -6,7 +6,7 @@ define([ "wield.dom" ], function( dom ) {
 		// NOTE: if the second argument (used to add to the first)
 		//       is defined we ignore the object receiver, otherwise
 		//       we use the first argument as the additive dom element
-		//       and the object reciever's `e` property
+		//       and the object receiver's `e` property
 		var e = add ? el : (add = el, this.e);
 
 		if ( e.nodeType === 1 || e.nodeType === 11 ) {
