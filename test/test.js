@@ -31,7 +31,7 @@
 
 		equal( fixture.element.childNodes.length, 0, "the fixture is empty" );
 
-		fixture.append( document.createElement("span") );
+		deepEqual( fixture, fixture.append(document.createElement("span")), "method is chainable" );
 
 		equal( fixture.element.childNodes.length, 1, "the fixture has one child" );
 	});
@@ -80,7 +80,7 @@
 
 		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 
-		fixture.wrap( wrapper );
+		deepEqual( fixture, fixture.wrap( wrapper ), "wrap is chainable" );
 
 		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
 	});
@@ -128,7 +128,7 @@
 
 		ok( document.getElementById("remove") !== null, "the fixture is present" );
 
-		fixture.remove();
+		deepEqual( fixture, fixture.remove(), "remove is chainable" );
 
 		equal( document.getElementById("remove"), null, "the fixture is gone" );
 	});
@@ -165,7 +165,7 @@
 		equal( document.getElementById("replacement"), null, "the replacement is not yet present" );
 
 		replacement.id = "replacement";
-		fixture.replaceWith( replacement );
+		deepEqual( fixture, fixture.replaceWith( replacement ), "replaceWith is chainable" );
 
 		equal( document.getElementById("replace"), null, "the fixture is gone" );
 		ok( document.getElementById("replacement") !== null, "the replacement is present" );

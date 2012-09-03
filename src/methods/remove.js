@@ -13,7 +13,7 @@ define([ "wield.dom" ], function( dom ) {
 			e.parentNode.removeChild( e );
 		}
 
-		// TODO: should we undef e/this._e/this.element?
+		return this;
 	};
 
 //>>excludeStart("exclude", pragmas.exclude);

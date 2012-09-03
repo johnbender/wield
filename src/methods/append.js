@@ -12,6 +12,8 @@ define([ "wield.dom" ], function( dom ) {
 		if ( e.nodeType === 1 || e.nodeType === 11 ) {
 			e.appendChild( add );
 		}
+
+		return this;
 	};
 
 //>>excludeStart("exclude", pragmas.exclude);

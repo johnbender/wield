@@ -21,6 +21,8 @@ define([ "wield.dom" ], function( dom ) {
 
 		// append the element to the innermost child of the wrapper
 		dom.append( add, e );
+
+		return this;
 	};
 
 //>>excludeStart("exclude", pragmas.exclude);

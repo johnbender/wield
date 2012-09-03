@@ -10,6 +10,8 @@ define([ "wield.dom" ], function( dom ) {
 		var e = add ? el : (add = dom.toElem(el), this._e);
 
 		e.parentNode.insertBefore( add, e.nextSibling );
+
+		return this;
 	};
 
 //>>excludeStart("exclude", pragmas.exclude);
