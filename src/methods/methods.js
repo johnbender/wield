@@ -5,6 +5,7 @@ define( "methods", function() {
 		"methods/append",
 		"methods/before",
 		"methods/remove",
+		"methods/replacewith",
 		"methods/wrap"
 	]);
 });

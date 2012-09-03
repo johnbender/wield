@@ -145,7 +145,7 @@
 
 	test( "remove is a noop withiout a parent node", function() {
 		expect( 0 );
-		
+
 		var fixture = new Wield.Dom({
 			parentNode: null
 		});
@@ -153,5 +153,35 @@
 		// If `e.parentNode.removeChild` is called it'll throw an exception
 		// not an amazing test :/
 		fixture.remove();
+	});
+
+	module( "Wield.Dom.prototype.replaceWith" );
+
+	test( "replaceWith works", function() {
+		var fixture = new Wield.Dom( document.getElementById("replace") ),
+		replacement = document.createElement( "div" );
+
+		ok( document.getElementById("replace") !== null, "the fixture is present" );
+		equal( document.getElementById("replacement"), null, "the replacement is not yet present" );
+
+		replacement.id = "replacement";
+		fixture.replaceWith( replacement );
+
+		equal( document.getElementById("replace"), null, "the fixture is gone" );
+		ok( document.getElementById("replacement") !== null, "the replacement is present" );
+	});
+
+	test( "replaceWith works as a standalone function", function() {
+		var fixture = document.getElementById("replace"),
+		replacement = document.createElement( "div" );
+
+		ok( document.getElementById("replace") !== null, "the fixture is present" );
+		equal( document.getElementById("replacement"), null, "the replacement is not yet present" );
+
+		replacement.id = "replacement";
+		Wield.Dom.prototype.replaceWith( fixture, replacement );
+
+		equal( document.getElementById("replace"), null, "the fixture is gone" );
+		ok( document.getElementById("replacement") !== null, "the replacement is present" );
 	});
 }( window.Wield ));
