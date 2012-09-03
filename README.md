@@ -1,6 +1,6 @@
 # Wield
 
-A tiny object wrapper around the DOM, targetted at replacing the core of the manipulations found inside jQuery, and providing a collection API on top of it.
+A tiny object wrapper around the DOM, targeted at replacing the core of the manipulations found inside jQuery, and providing a collection API on top of it. The hope is that the core DOM manipulations could become popular enough to be incorporated as an abstracted set of DOM manipulations inside jQuery.
 
 ## Project Goals
 
@@ -11,7 +11,7 @@ The primary goals of this project are to be exceptionally modular with a prefere
 3. Parsing performance
 4. Method performance
 5. Size min'd and gzip'd
-5. Type checked (clojure compiler)
+5. Type checked (closure compiler)
 
 ## DOM Manipulation
 
@@ -119,3 +119,23 @@ var newDiv = Wield.create( "<div/>" );
 
 Wield.find( "span" ).append( newDiv );
 ```
+
+## Outstanding Questions
+
+There are few things that are yet to be decided about how the library should work:
+
+1. Should the prototype functions return the element being operated on for the sake of composition?
+2. Is it worth supporting many invocation patterns (ie, should it just be functions)? More specifically what is the real cost of supporting both?
+3. Are there other libraries that focus on replacing the browsers DOM manipulation API?
+4. Is there interest in the library by itself?
+
+## TODOs
+
+There are outstanding items of work that need to be put into place for the project to achieve it's goals:
+
+1. Size regression testing
+2. Performance regression testing
+3. Cross browser automated testing (testswarm)
+4. Sample DOM manip
+5. Node based amd builder
+6. Sort out build vs amd include issues (eg, excluding returns with pragmas)
