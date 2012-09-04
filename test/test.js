@@ -190,15 +190,14 @@
 	test( "empty works", function() {
 		var fixture = new Wield.Dom( document.getElementById("empty") );
 
-		console.log( fixture.element.childNodes );
 		equal( fixture.element.childNodes.length, 2, "the fixture is present and has child elements" );
 
-		deepEqual( fixture, fixture.empty(), "remove is chainable" );
+		deepEqual( fixture, fixture.empty(), "empty is chainable" );
 
 		equal( fixture.element.childNodes.length, 0, "the fixture is present but is empty" );
 	});
 
-	test( "remove works as a standalone function", function() {
+	test( "empty works as a standalone function", function() {
 		var fixture = document.getElementById("empty");
 
 		equal( fixture.childNodes.length, 2, "the fixture is present and has child elements" );
@@ -206,6 +205,58 @@
 		Wield.Dom.prototype.empty( fixture );
 
 		equal( fixture.childNodes.length, 0, "the fixture is present but is empty" );
+	});
+
+	module( "Wield.Dom.prototype.after" );
+
+	test( "after works", function() {
+		var fixture = new Wield.Dom( document.getElementById("after") ),
+			span = document.createElement("span");
+
+		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+
+		deepEqual( fixture, fixture.after(span), "after is chainable" );
+
+		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span, fixture.element.parentNode.childNodes[1], "the span is the second child" );
+	});
+
+	test( "after works as a standalone function", function() {
+		var fixture = document.getElementById( "after" ),
+			span = document.createElement("span");
+
+		equal( fixture.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+
+		Wield.Dom.prototype.after( fixture, span );
+
+		equal( fixture.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span, fixture.parentNode.childNodes[1], "the span is the second child" );
+	});
+
+	module( "Wield.Dom.prototype.before" );
+
+	test( "before works", function() {
+		var fixture = new Wield.Dom( document.getElementById("before") ),
+			span = document.createElement("span");
+
+		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+
+		deepEqual( fixture, fixture.before(span), "before is chainable" );
+
+		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span, fixture.element.parentNode.childNodes[0], "the span is the second child" );
+	});
+
+	test( "before works as a standalone function", function() {
+		var fixture = document.getElementById( "before" ),
+			span = document.createElement("span");
+
+		equal( fixture.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+
+		Wield.Dom.prototype.before( fixture, span );
+
+		equal( fixture.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span, fixture.parentNode.childNodes[0], "the span is the second child" );
 	});
 
 }( window.Wield ));
