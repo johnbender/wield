@@ -1,12 +1,13 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "wield.dom" ], function( dom ) {
+define([ "wield.dom", "methods/extract", "methods/remove" ], function( dom ) {
 //>>excludeEnd("exclude");
 
-	dom.before = function( el, add ) {
+	dom.unwrap = function( parent ) {
 		// NOTE see readme about invocation patterns
-		var e = add ? el : (add = dom.toElem(el), this._e);
+		var parent = parent ? parent : this._e;
 
-		e.parentNode.insertBefore( add, e );
+		jQuery.dom.extract( parent );
+		jQuery.dom.remove( parent );
 
 		return this;
 	};

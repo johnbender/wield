@@ -3,10 +3,7 @@ define([ "wield.dom" ], function( dom ) {
 //>>excludeEnd("exclude");
 
 	dom.after = function( el, add ) {
-		// NOTE: if the second argument (used to add to the first)
-		//       is defined we ignore the object receiver, otherwise
-		//       we use the first argument as the additive dom element
-		//       and the object receiver's `e` property
+		// NOTE see readme about invocation patterns
 		var e = add ? el : (add = dom.toElem(el), this._e);
 
 		e.parentNode.insertBefore( add, e.nextSibling );

@@ -4,8 +4,10 @@ define( "methods", function() {
 		"methods/after",
 		"methods/append",
 		"methods/before",
+		"methods/extract",
 		"methods/remove",
 		"methods/replacewith",
+		"methods/unwrap",
 		"methods/wrap"
 	]);
 });
