@@ -4,9 +4,14 @@ define([ "wield.dom", "methods/extract", "methods/remove" ], function( dom ) {
 
 	dom.unwrap = function( parent ) {
 		// NOTE see readme about invocation patterns
-		var parent = parent ? parent : this._e;
+		var parent = parent ? parent : this._e,
+			children = parent.childNodes,
+			l = children.length;
 
-		jQuery.dom.extract( parent );
+		while( l-- ){
+			jQuery.dom.after( parent, children[l] );
+		}
+
 		jQuery.dom.remove( parent );
 
 		return this;
