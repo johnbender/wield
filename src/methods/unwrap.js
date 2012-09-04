@@ -9,10 +9,10 @@ define([ "wield.dom", "methods/remove" ], function( dom ) {
 			l = children.length;
 
 		while( l-- ){
-			jQuery.dom.after( parent, children[l] );
+			dom.after( parent, children[l] );
 		}
 
-		jQuery.dom.remove( parent );
+		dom.remove( parent );
 
 		return this;
 	};
