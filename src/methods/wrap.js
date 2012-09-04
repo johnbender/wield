@@ -1,5 +1,5 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "wield.dom" ], function( dom ) {
+define([ "wield.dom", "methods/append", "methods/before"], function( dom ) {
 //>>excludeEnd("exclude");
 
 	dom.wrap = function( el, add ) {
