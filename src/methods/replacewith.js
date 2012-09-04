@@ -9,16 +9,16 @@ define([ "wield.dom" ], function( dom ) {
 		//       and the object receiver's `e` property
 		element = replace ? element : (replace = dom.toElem(element), this._e);
 
-		var	next = element.nextSibling,
-			parent = element.parentNode;
-
-		dom.remove( element );
+		var next = element.nextSibling, parent;
 
 		if ( next ) {
 			dom.before( next, replace );
 		} else {
+			parent = element.parentNode;
 			dom.append( parent, replace );
 		}
+
+		dom.remove( element );
 
 		return this;
 	};
