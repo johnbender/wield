@@ -14,8 +14,7 @@ define([ "wield.dom",
 		if ( next ) {
 			dom.before( next, replace );
 		} else {
-			parent = element.parentNode;
-			dom.append( parent, replace );
+			dom.append( element.parentNode, replace );
 		}
 
 		dom.remove( element );
