@@ -121,7 +121,7 @@
 		equal( fixture.element.parentNode.nodeName, "SPAN", "the fixture is wrapped" );
 	});
 
-	module( "Wield.Dom.prototype.append" );
+	module( "Wield.Dom.prototype.remove" );
 
 	test( "remove works", function() {
 		var fixture = new Wield.Dom( document.getElementById("remove") );
