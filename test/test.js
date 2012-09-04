@@ -184,4 +184,28 @@
 		equal( document.getElementById("replace"), null, "the fixture is gone" );
 		ok( document.getElementById("replacement") !== null, "the replacement is present" );
 	});
+
+	module( "Wield.Dom.prototype.empty" );
+
+	test( "empty works", function() {
+		var fixture = new Wield.Dom( document.getElementById("empty") );
+
+		console.log( fixture.element.childNodes );
+		equal( fixture.element.childNodes.length, 2, "the fixture is present and has child elements" );
+
+		deepEqual( fixture, fixture.empty(), "remove is chainable" );
+
+		equal( fixture.element.childNodes.length, 0, "the fixture is present but is empty" );
+	});
+
+	test( "remove works as a standalone function", function() {
+		var fixture = document.getElementById("empty");
+
+		equal( fixture.childNodes.length, 2, "the fixture is present and has child elements" );
+
+		Wield.Dom.prototype.empty( fixture );
+
+		equal( fixture.childNodes.length, 0, "the fixture is present but is empty" );
+	});
+
 }( window.Wield ));
