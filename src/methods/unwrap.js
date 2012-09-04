@@ -1,5 +1,5 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "wield.dom", "methods/extract", "methods/remove" ], function( dom ) {
+define([ "wield.dom", "methods/remove" ], function( dom ) {
 //>>excludeEnd("exclude");
 
 	dom.unwrap = function( parent ) {
