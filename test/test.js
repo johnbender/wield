@@ -1,27 +1,40 @@
 (function( Wield ) {
-	module( "Wield.Dom.find" );
+	module( "Wield.Dom.prototype.after" );
 
-	if( document.querySelector ) {
-		test( "find works", function() {
-			var fixture = Wield.Dom.find( "#qunit-fixture" );
+	test( "after works", function() {
+		var fixture = new Wield.Dom( document.getElementById("after") ),
+			span = document.createElement("span");
 
-			equal( fixture.element.id, "qunit-fixture", "querySelector is used" );
-		});
+		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
 
-		test( "find works when invoked standalone", function() {
-			var $ = Wield.Dom.find,
-				fixture = $( "#qunit-fixture" );
+		deepEqual( fixture, fixture.after(span), "after is chainable" );
 
-			equal( fixture.element.id, "qunit-fixture", "querySelector is used" );
-		});
-	}
+		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span, fixture.element.parentNode.childNodes[1], "the span is the second child" );
+	});
 
-	test( "raises and exception when no finder is defined", function() {
-		Wield.Dom.finder = undefined;
+	test( "after with object receiver works with Wield objects", function() {
+		var fixture = new Wield.Dom( document.getElementById("after") ),
+			span = new Wield.Dom( document.createElement("span") );
 
-		throws(function() {
-			Wield.Dom.find( "foo" );
-		});
+		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+
+		deepEqual( fixture, fixture.after(span), "after is chainable" );
+
+		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span.element, fixture.element.parentNode.childNodes[1], "the span is the second child" );
+	});
+
+	test( "after works as a standalone function", function() {
+		var fixture = document.getElementById( "after" ),
+			span = document.createElement("span");
+
+		equal( fixture.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+
+		Wield.Dom.prototype.after( fixture, span );
+
+		equal( fixture.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span, fixture.parentNode.childNodes[1], "the span is the second child" );
 	});
 
 	module( "Wield.Dom.prototype.append" );
@@ -72,53 +85,90 @@
 		equal( fixture.childNodes.length, 1, "the fixture has one child" );
 	});
 
-	module( "Wield.Dom.prototype.wrap" );
 
-	test( "wrap works", function() {
-		var fixture = new Wield.Dom( document.getElementById("wrap") ),
-			wrapper = document.getElementById( "wrapper" );
+	module( "Wield.Dom.prototype.before" );
 
-		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
+	test( "before works", function() {
+		var fixture = new Wield.Dom( document.getElementById("before") ),
+			span = document.createElement("span");
 
-		deepEqual( fixture, fixture.wrap( wrapper ), "wrap is chainable" );
+		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
 
-		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
+		deepEqual( fixture, fixture.before(span), "before is chainable" );
+
+		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span, fixture.element.parentNode.childNodes[0], "the span is the second child" );
 	});
 
-	test( "wrap with object receiver works with wield objects", function() {
-		var fixture = new Wield.Dom( document.getElementById("wrap") ),
-			wrapper = new Wield.Dom( document.getElementById("wrapper") );
+	test( "before works", function() {
+		var fixture = new Wield.Dom( document.getElementById("before") ),
+			span = new Wield.Dom( document.createElement("span") );
 
-		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
+		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
 
-		fixture.wrap( wrapper );
+		deepEqual( fixture, fixture.before(span), "before is chainable" );
 
-		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
+		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span.element, fixture.element.parentNode.childNodes[0], "the span is the second child" );
 	});
 
-	test( "wrap works as a standalone function", function() {
-		var fixture = new Wield.Dom( document.getElementById("wrap") ),
-			wrapper = document.getElementById( "wrapper" );
+	test( "before works as a standalone function", function() {
+		var fixture = document.getElementById( "before" ),
+			span = document.createElement("span");
 
-		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
+		equal( fixture.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
 
-		Wield.Dom.prototype.wrap( fixture.element, wrapper );
+		Wield.Dom.prototype.before( fixture, span );
 
-		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
+		equal( fixture.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span, fixture.parentNode.childNodes[0], "the span is the second child" );
 	});
 
-	test( "wrap uses innermost child of the wrapper", function() {
-		var fixture = new Wield.Dom( document.getElementById("wrap") ),
-			wrapper = new Wield.Dom( document.getElementById( "wrapper" ) );
+	module( "Wield.Dom.prototype.empty" );
 
-		wrapper.append( document.createElement("span") );
+	test( "empty works", function() {
+		var fixture = new Wield.Dom( document.getElementById("empty") );
 
-		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
+		equal( fixture.element.childNodes.length, 2, "the fixture is present and has child elements" );
 
-		fixture.wrap( wrapper.element );
+		deepEqual( fixture, fixture.empty(), "empty is chainable" );
 
-		equal( fixture.element.parentNode.id, "", "the fixture is wrapped" );
-		equal( fixture.element.parentNode.nodeName, "SPAN", "the fixture is wrapped" );
+		equal( fixture.element.childNodes.length, 0, "the fixture is present but is empty" );
+	});
+
+	test( "empty works as a standalone function", function() {
+		var fixture = document.getElementById("empty");
+
+		equal( fixture.childNodes.length, 2, "the fixture is present and has child elements" );
+
+		Wield.Dom.prototype.empty( fixture );
+
+		equal( fixture.childNodes.length, 0, "the fixture is present but is empty" );
+	});
+
+	module( "Wield.Dom.find" );
+
+	if( document.querySelector ) {
+		test( "find works", function() {
+			var fixture = Wield.Dom.find( "#qunit-fixture" );
+
+			equal( fixture.element.id, "qunit-fixture", "querySelector is used" );
+		});
+
+		test( "find works when invoked standalone", function() {
+			var $ = Wield.Dom.find,
+				fixture = $( "#qunit-fixture" );
+
+			equal( fixture.element.id, "qunit-fixture", "querySelector is used" );
+		});
+	}
+
+	test( "raises and exception when no finder is defined", function() {
+		Wield.Dom.finder = undefined;
+
+		throws(function() {
+			Wield.Dom.find( "foo" );
+		});
 	});
 
 	module( "Wield.Dom.prototype.remove" );
@@ -185,102 +235,77 @@
 		ok( document.getElementById("replacement") !== null, "the replacement is present" );
 	});
 
-	module( "Wield.Dom.prototype.empty" );
+	module( "Wield.Dom.prototype.unwrap" );
 
-	test( "empty works", function() {
-		var fixture = new Wield.Dom( document.getElementById("empty") );
+	test( "unwrap works", function() {
+		var fixture = new Wield.Dom( document.getElementById("unwrap") ),
+			wrapped = document.getElementById( "wrapped" );
 
-		equal( fixture.element.childNodes.length, 2, "the fixture is present and has child elements" );
+		equal( wrapped.parentNode.id, "unwrap", "the fixture is wrapped" );
 
-		deepEqual( fixture, fixture.empty(), "empty is chainable" );
+		deepEqual( fixture, fixture.unwrap(), "unwrap is chainable" );
 
-		equal( fixture.element.childNodes.length, 0, "the fixture is present but is empty" );
+		equal( wrapped.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 	});
 
-	test( "empty works as a standalone function", function() {
-		var fixture = document.getElementById("empty");
+	test( "unwrap works as a standalone function", function() {
+		var fixture = document.getElementById( "unwrap" ),
+			wrapped = document.getElementById( "wrapped" );
 
-		equal( fixture.childNodes.length, 2, "the fixture is present and has child elements" );
+		equal( wrapped.parentNode.id, "unwrap", "the fixture is wrapped" );
 
-		Wield.Dom.prototype.empty( fixture );
+		Wield.Dom.prototype.unwrap( fixture );
 
-		equal( fixture.childNodes.length, 0, "the fixture is present but is empty" );
+		equal( wrapped.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 	});
 
-	module( "Wield.Dom.prototype.after" );
+	module( "Wield.Dom.prototype.wrap" );
 
-	test( "after works", function() {
-		var fixture = new Wield.Dom( document.getElementById("after") ),
-			span = document.createElement("span");
+	test( "wrap works", function() {
+		var fixture = new Wield.Dom( document.getElementById("wrap") ),
+			wrapper = document.getElementById( "wrapper" );
 
-		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 
-		deepEqual( fixture, fixture.after(span), "after is chainable" );
+		deepEqual( fixture, fixture.wrap( wrapper ), "wrap is chainable" );
 
-		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
-		equal( span, fixture.element.parentNode.childNodes[1], "the span is the second child" );
+		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
 	});
 
-	test( "after with object receiver works with Wield objects", function() {
-		var fixture = new Wield.Dom( document.getElementById("after") ),
-			span = new Wield.Dom( document.createElement("span") );
+	test( "wrap with object receiver works with wield objects", function() {
+		var fixture = new Wield.Dom( document.getElementById("wrap") ),
+			wrapper = new Wield.Dom( document.getElementById("wrapper") );
 
-		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 
-		deepEqual( fixture, fixture.after(span), "after is chainable" );
+		fixture.wrap( wrapper );
 
-		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
-		equal( span.element, fixture.element.parentNode.childNodes[1], "the span is the second child" );
+		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
 	});
 
-	test( "after works as a standalone function", function() {
-		var fixture = document.getElementById( "after" ),
-			span = document.createElement("span");
+	test( "wrap works as a standalone function", function() {
+		var fixture = new Wield.Dom( document.getElementById("wrap") ),
+			wrapper = document.getElementById( "wrapper" );
 
-		equal( fixture.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 
-		Wield.Dom.prototype.after( fixture, span );
+		Wield.Dom.prototype.wrap( fixture.element, wrapper );
 
-		equal( fixture.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
-		equal( span, fixture.parentNode.childNodes[1], "the span is the second child" );
+		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
 	});
 
-	module( "Wield.Dom.prototype.before" );
+	test( "wrap uses innermost child of the wrapper", function() {
+		var fixture = new Wield.Dom( document.getElementById("wrap") ),
+			wrapper = new Wield.Dom( document.getElementById( "wrapper" ) );
 
-	test( "before works", function() {
-		var fixture = new Wield.Dom( document.getElementById("before") ),
-			span = document.createElement("span");
+		wrapper.append( document.createElement("span") );
 
-		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 
-		deepEqual( fixture, fixture.before(span), "before is chainable" );
+		fixture.wrap( wrapper.element );
 
-		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
-		equal( span, fixture.element.parentNode.childNodes[0], "the span is the second child" );
-	});
-
-	test( "before works", function() {
-		var fixture = new Wield.Dom( document.getElementById("before") ),
-			span = new Wield.Dom( document.createElement("span") );
-
-		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
-
-		deepEqual( fixture, fixture.before(span), "before is chainable" );
-
-		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
-		equal( span.element, fixture.element.parentNode.childNodes[0], "the span is the second child" );
-	});
-
-	test( "before works as a standalone function", function() {
-		var fixture = document.getElementById( "before" ),
-			span = document.createElement("span");
-
-		equal( fixture.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
-
-		Wield.Dom.prototype.before( fixture, span );
-
-		equal( fixture.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
-		equal( span, fixture.parentNode.childNodes[0], "the span is the second child" );
+		equal( fixture.element.parentNode.id, "", "the fixture is wrapped" );
+		equal( fixture.element.parentNode.nodeName, "SPAN", "the fixture is wrapped" );
 	});
 
 }( window.Wield ));
