@@ -221,6 +221,18 @@
 		equal( span, fixture.element.parentNode.childNodes[1], "the span is the second child" );
 	});
 
+	test( "after with object receiver works with Wield objects", function() {
+		var fixture = new Wield.Dom( document.getElementById("after") ),
+			span = new Wield.Dom( document.createElement("span") );
+
+		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+
+		deepEqual( fixture, fixture.after(span), "after is chainable" );
+
+		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span.element, fixture.element.parentNode.childNodes[1], "the span is the second child" );
+	});
+
 	test( "after works as a standalone function", function() {
 		var fixture = document.getElementById( "after" ),
 			span = document.createElement("span");
@@ -245,6 +257,18 @@
 
 		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
 		equal( span, fixture.element.parentNode.childNodes[0], "the span is the second child" );
+	});
+
+	test( "before works", function() {
+		var fixture = new Wield.Dom( document.getElementById("before") ),
+			span = new Wield.Dom( document.createElement("span") );
+
+		equal( fixture.element.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
+
+		deepEqual( fixture, fixture.before(span), "before is chainable" );
+
+		equal( fixture.element.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
+		equal( span.element, fixture.element.parentNode.childNodes[0], "the span is the second child" );
 	});
 
 	test( "before works as a standalone function", function() {
