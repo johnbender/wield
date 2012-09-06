@@ -5,6 +5,7 @@ define( "methods", function() {
 		"methods/append",
 		"methods/before",
 		"methods/empty",
+		"methods/html",
 		"methods/remove",
 		"methods/replacewith",
 		"methods/unwrap",

@@ -171,6 +171,20 @@
 		});
 	});
 
+	module( "Wield.Dom.prototype.html" );
+
+	test( "html works", function() {
+		var fixture = new Wield.Dom( document.getElementById("html") );
+
+		equal( fixture.html(), "foo", "the html is returned" );
+	});
+
+	test( "html works as a standalone function", function() {
+		var fixture = document.getElementById("html");
+
+		equal( Wield.Dom.prototype.html( fixture ), "foo", "the html is returned" );
+	});
+
 	module( "Wield.Dom.prototype.remove" );
 
 	test( "remove works", function() {
