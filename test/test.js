@@ -166,7 +166,7 @@
 	test( "raises and exception when no finder is defined", function() {
 		Wield.Dom.finder = undefined;
 
-		throws(function() {
+		QUnit.throws(function() {
 			Wield.Dom.find( "foo" );
 		});
 	});
