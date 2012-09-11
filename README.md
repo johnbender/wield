@@ -2,6 +2,10 @@
 
 A tiny object wrapper around the DOM, targeted at replacing the core of the manipulations found inside jQuery, and providing a collection API on top of it. The hope is that the core DOM manipulations could become popular enough to be incorporated as an abstracted set of DOM manipulations inside jQuery.
 
+## Credit
+
+An important point of information. The vast majority of the logic that is resides in the DOM manipulations methods provided by Wield is either taken directly from [jQuery Core](http://jquery.com/) or [Sizzle](http://sizzlejs.com/) and all credit for the time, effort and code belongs to the contributors to both of those fine projects. The goal here is _not_ to reproduce that effort but rather to abstract it and the value it provides.
+
 ## Project Goals
 
 The primary goals of this project are to be exceptionally modular with a preference toward building a custom stack as a means to reduce size, fast parsing and method execution from the start, and to keep the collections API separate from the DOM manipulation API.
