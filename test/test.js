@@ -271,6 +271,39 @@
 		equal( fixture.text(), "fiz", "the new text is returned" );
 	});
 
+	test( "setting text works with text node", function() {
+		var fixture = new Wield.Dom( document.getElementById("text") ),
+			textNode = document.createTextNode( "fiz" );
+
+		ok( fixture.text() !== "fiz", "the text is not equal to our set value" );
+
+		fixture.text( textNode );
+
+		equal( fixture.text(), "fiz", "the new text is returned" );
+	});
+
+	test( "setting text works with text node", function() {
+		var fixture = new Wield.Dom( document.getElementById("text") ),
+			textNode = document.createTextNode( "fiz" );
+
+		ok( fixture.text() !== "fiz", "the text is not equal to our set value" );
+
+		fixture.text( textNode );
+
+		equal( fixture.text(), "fiz", "the new text is returned" );
+	});
+
+	test( "setting text works with Wield wrapped text node", function() {
+		var fixture = new Wield.Dom( document.getElementById("text") ),
+			textNode = new Wield.Dom( document.createTextNode( "fiz" ) );
+
+		ok( fixture.text() !== "fiz", "the text is not equal to our set value" );
+
+		fixture.text( textNode );
+
+		equal( fixture.text(), "fiz", "the new text is returned" );
+	});
+
 	module( "Wield.Dom.prototype.unwrap" );
 
 	test( "unwrap works", function() {

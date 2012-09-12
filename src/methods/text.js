@@ -6,9 +6,14 @@ define([ "wield.dom" ], function( dom ) {
 	//      where that functionality is ommited in html stems from the fact
 	//      that it's trivially easy to do. One could make the case that
 	//      consistency is paramount, and it's worth considering
+	// NOTE we are supporting many possible invocation patterns with this method
+	//      where the explicit goal of this libary is to avoid that
+	//      el {string}
+	//      el {text node}
+	//      el {Wield(text node)}
 	dom.text = function( el, text ) {
 		// NOTE see readme about invocation patterns
-		var e = this._e ? (text = el, this._e) : el,
+		var e = this._e ? (text = this.toElem(el), this._e) : el,
 			nodeType = e.nodeType,
 			ret = "";
 
@@ -16,7 +21,12 @@ define([ "wield.dom" ], function( dom ) {
 		// of the element under operation and add a new text node
 		if( text ) {
 			dom.empty( e );
-			dom.append( e, (e.ownerDocument || document).createTextNode(text) );
+
+			if( typeof text === "string" ) {
+				text = (e.ownerDocument || document).createTextNode(text);
+			}
+
+			dom.append( e, text );
 		} else {
 			// NOTE taken directly from the sizzle source
 			if ( nodeType === 1 || nodeType === 9 || nodeType === 11 ) {

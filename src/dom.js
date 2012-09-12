@@ -9,7 +9,7 @@ define( "wield.dom", [ "core" ], function( Wield ) {
 	var dom = Wield.Dom.prototype = {};
 
 	dom.toElem = function( add ) {
-		return add._e ? add._e : add;
+		return add && add._e ? add._e : add;
 	};
 
 //>>excludeStart("exclude", pragmas.exclude);
