@@ -249,6 +249,28 @@
 		ok( document.getElementById("replacement") !== null, "the replacement is present" );
 	});
 
+	module( "Wield.Dom.prototype.text" );
+
+	test( "text works", function() {
+		var fixture = new Wield.Dom( document.getElementById("text") );
+
+		equal( fixture.text(), "foobar", "the concatenated text is returned" );
+	});
+
+	test( "html works as a standalone function", function() {
+		var fixture = document.getElementById("text");
+
+		equal( Wield.Dom.prototype.text( fixture ), "foobar", "the concatenated text is returned" );
+	});
+
+	test( "setting text works", function() {
+		var fixture = new Wield.Dom( document.getElementById("text") );
+
+		fixture.text( "fiz" );
+
+		equal( fixture.text(), "fiz", "the new text is returned" );
+	});
+
 	module( "Wield.Dom.prototype.unwrap" );
 
 	test( "unwrap works", function() {

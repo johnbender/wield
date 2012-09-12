@@ -7,6 +7,7 @@ define( "methods", function() {
 		"methods/empty",
 		"methods/html",
 		"methods/remove",
+		"methods/text",
 		"methods/replacewith",
 		"methods/unwrap",
 		"methods/wrap"
