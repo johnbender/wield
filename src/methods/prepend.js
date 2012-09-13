@@ -1,16 +1,13 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "wield.dom" ], function( dom ) {
+define([ "methods" ], function( methods ) {
 //>>excludeEnd("exclude");
 
-	dom.prepend = function( el, add ) {
-		// NOTE see readme about invocation patterns
-		var e = add ? el : (add = dom.toElem(el), this._e);
-
+	methods.dom.prepend = function( e, add ) {
 		if ( e.nodeType === 1 || e.nodeType === 11 ) {
 			e.insertBefore( add, e.firstChild );
 		}
 
-		return this;
+		return e;
 	};
 
 //>>excludeStart("exclude", pragmas.exclude);

@@ -1,25 +1,22 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "wield.dom",
+define([ "methods",
 	 "methods/append",
 	 "methods/before",
-	 "methods/remove" ], function( dom ) {
+	 "methods/remove" ], function( methods ) {
 //>>excludeEnd("exclude");
 
-	dom.replaceWith = function( element, replace ) {
-		// NOTE see readme about invocation patterns
-		element = replace ? element : (replace = dom.toElem(element), this._e);
-
+	methods.dom.replaceWith = function( element, replace ) {
 		var next = element.nextSibling, parent;
 
 		if ( next ) {
-			dom.before( next, replace );
+			methods.dom.before( next, replace );
 		} else {
-			dom.append( element.parentNode, replace );
+			methods.dom.append( element.parentNode, replace );
 		}
 
-		dom.remove( element );
+		methods.dom.remove( element );
 
-		return this;
+		return element;
 	};
 
 //>>excludeStart("exclude", pragmas.exclude);

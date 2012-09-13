@@ -1,5 +1,5 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define( "wield.dom.find", [ "dom" ], function() {
+define( "find", [ "dom" ], function() {
 //>>excludeEnd("exclude");
 
 	Wield.Dom.find = function( selector ) {

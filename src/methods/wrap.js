@@ -1,14 +1,11 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "wield.dom", "methods/append", "methods/before"], function( dom ) {
+define([ "methods", "methods/append", "methods/before"], function( methods ) {
 //>>excludeEnd("exclude");
 
-	dom.wrap = function( el, add ) {
-		// NOTE see readme about invocation patterns
-		var e = add ? el : (add = dom.toElem(el), this._e);
-
+	methods.dom.wrap = function( e, add ) {
 		// put the wrapper in the DOM just before the element to be wrapped
 		if( e.parentNode ) {
-			dom.before( e, add );
+			methods.dom.before( e, add );
 		}
 
 		// get innermost child element of the wrapper
@@ -17,9 +14,9 @@ define([ "wield.dom", "methods/append", "methods/before"], function( dom ) {
 		}
 
 		// append the element to the innermost child of the wrapper
-		dom.append( add, e );
+		methods.dom.append( add, e );
 
-		return this;
+		return e;
 	};
 
 //>>excludeStart("exclude", pragmas.exclude);

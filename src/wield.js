@@ -1,8 +1,10 @@
 //>>excludeStart("exclude", pragmas.exclude);
 //>>group: exclude
 define( "wield", ["core"], function() {
-	require(["dom"], function() {
-		require(["find", "methods/methods"]);
+	require(["methods"], function() {
+		require(["methods/all"], function() {
+			require([ "dom", "find" ]);
+		});
 	});
 });
 //>>excludeEnd("exclude");

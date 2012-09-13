@@ -31,7 +31,7 @@
 
 		equal( fixture.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
 
-		Wield.Dom.prototype.after( fixture, span );
+		Wield.Methods.dom.after( fixture, span );
 
 		equal( fixture.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
 		equal( span, fixture.parentNode.childNodes[1], "the span is the second child" );
@@ -77,7 +77,7 @@
 
 		equal( fixture.childNodes.length, 0, "the fixture is empty" );
 
-		Wield.Dom.prototype.append(
+		Wield.Methods.dom.append(
 			fixture,
 			document.createElement("span")
 		);
@@ -91,7 +91,7 @@
 		var fixture = new Wield.Dom( document.getElementById("attr") );
 
 		equal( fixture.attr( 'data-foo' ), undefined, "attr returns undefined before data-foo is set" );
-		equal( fixture.attr( 'data-foo', true ), "true", "the value is returned" );
+		equal( fixture.attr( 'data-foo', true ), fixture, "the object is returned" );
 		equal( fixture.attr( 'data-foo' ), "true", "attr returns true after data-foo is set" );
 		equal( fixture.element.getAttribute( 'data-foo' ), "true", "attr returns true after data-foo is set" );
 	});
@@ -99,27 +99,27 @@
 	test( "attr works as a standalone function", function() {
 		var fixture = document.getElementById("attr");
 
-		equal( Wield.Dom.prototype.attr(fixture, 'data-foo'), undefined, "attr returns undefined before data-foo is set" );
-		equal( Wield.Dom.prototype.attr(fixture, 'data-foo', true), "true", "the value is returned" );
-		equal( Wield.Dom.prototype.attr(fixture, 'data-foo'), "true", "attr returns true after data-foo is set" );
+		equal( Wield.Methods.dom.attr(fixture, 'data-foo'), undefined, "attr returns undefined before data-foo is set" );
+		equal( Wield.Methods.dom.attr(fixture, 'data-foo', true), "true", "the value is returned" );
+		equal( Wield.Methods.dom.attr(fixture, 'data-foo'), "true", "attr returns true after data-foo is set" );
 		equal( fixture.getAttribute("data-foo"), "true", "attr returns true after data-foo is set" );
 	});
 
 	test( "attr defaults to prop call when getAttribute is not defined", function() {
-		var prop = Wield.Dom.prototype.prop,
+		var prop = Wield.Methods.dom.prop,
 			e = { nodeType: 1 }, name = "foo", value = "bar";
 
 		expect( 3 );
 
-		Wield.Dom.prototype.prop = function( elem, passedName, passedValue ) {
+		Wield.Methods.dom.prop = function( elem, passedName, passedValue ) {
 			equal( elem, e, "object is the same" );
 			equal( passedName, name, "name is the same" );
 			equal( passedValue, value, "value is the same" );
 		};
 
-		Wield.Dom.prototype.attr( e, name, value );
+		Wield.Methods.dom.attr( e, name, value );
 
-		Wield.Dom.prototype.prop = prop;
+		Wield.Methods.dom.prop = prop;
 	});
 
 	module( "Wield.Dom.prototype.before" );
@@ -154,7 +154,7 @@
 
 		equal( fixture.parentNode.childNodes.length, 1, "the fixture is present and has child elements" );
 
-		Wield.Dom.prototype.before( fixture, span );
+		Wield.Methods.dom.before( fixture, span );
 
 		equal( fixture.parentNode.childNodes.length, 2, "the fixture is present but is empty" );
 		equal( span, fixture.parentNode.childNodes[0], "the span is the second child" );
@@ -177,7 +177,7 @@
 
 		equal( fixture.childNodes.length, 2, "the fixture is present and has child elements" );
 
-		Wield.Dom.prototype.empty( fixture );
+		Wield.Methods.dom.empty( fixture );
 
 		equal( fixture.childNodes.length, 0, "the fixture is present but is empty" );
 	});
@@ -218,7 +218,7 @@
 	test( "html works as a standalone function", function() {
 		var fixture = document.getElementById("html");
 
-		equal( Wield.Dom.prototype.html( fixture ), "foo", "the html is returned" );
+		equal( Wield.Methods.dom.html( fixture ), "foo", "the html is returned" );
 	});
 
 	module( "Wield.Dom.prototype.prop" );
@@ -227,7 +227,7 @@
 		var fixture = new Wield.Dom( document.getElementById("prop") );
 
 		equal( fixture.prop( 'checked' ), true, "prop returns true before checked is set" );
-		equal( fixture.prop( 'checked', false ), false, "the value is returned" );
+		equal( fixture.prop( 'checked', false ), fixture, "the object is returned" );
 		equal( fixture.prop( 'checked' ), false, "prop returns true after checked is set" );
 		equal( fixture.element.checked, false, "prop returns true after checked is set" );
 	});
@@ -235,9 +235,9 @@
 	test( "prop works as a standalone function", function() {
 		var fixture = document.getElementById("prop");
 
-		equal( Wield.Dom.prototype.prop( fixture, 'checked' ), true, "prop returns false before checked is set" );
-		equal( Wield.Dom.prototype.prop( fixture, 'checked', false ), false, "the value is returned" );
-		equal( Wield.Dom.prototype.prop( fixture, 'checked' ), false, "prop returns true after checked is set" );
+		equal( Wield.Methods.dom.prop( fixture, 'checked' ), true, "prop returns false before checked is set" );
+		equal( Wield.Methods.dom.prop( fixture, 'checked', false ), false, "the value is returned" );
+		equal( Wield.Methods.dom.prop( fixture, 'checked' ), false, "prop returns true after checked is set" );
 		equal( fixture.checked, false, "prop returns true after checked is set" );
 	});
 
@@ -258,7 +258,7 @@
 
 		ok( document.getElementById("remove") !== null, "the fixture is present" );
 
-		Wield.Dom.prototype.remove( fixture );
+		Wield.Methods.dom.remove( fixture );
 
 		equal( document.getElementById("remove"), null, "the fixture is gone" );
 	});
@@ -299,7 +299,7 @@
 		equal( document.getElementById("replacement"), null, "the replacement is not yet present" );
 
 		replacement.id = "replacement";
-		Wield.Dom.prototype.replaceWith( fixture, replacement );
+		Wield.Methods.dom.replaceWith( fixture, replacement );
 
 		equal( document.getElementById("replace"), null, "the fixture is gone" );
 		ok( document.getElementById("replacement") !== null, "the replacement is present" );
@@ -313,10 +313,10 @@
 		equal( fixture.text(), "foobar", "the concatenated text is returned" );
 	});
 
-	test( "html works as a standalone function", function() {
+	test( "text works as a standalone function", function() {
 		var fixture = document.getElementById("text");
 
-		equal( Wield.Dom.prototype.text( fixture ), "foobar", "the concatenated text is returned" );
+		equal( Wield.Methods.dom.text( fixture ), "foobar", "the concatenated text is returned" );
 	});
 
 	test( "setting text works", function() {
@@ -379,7 +379,7 @@
 
 		equal( wrapped.parentNode.id, "unwrap", "the fixture is wrapped" );
 
-		Wield.Dom.prototype.unwrap( fixture );
+		Wield.Methods.dom.unwrap( fixture );
 
 		equal( wrapped.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 	});
@@ -414,7 +414,7 @@
 
 		equal( fixture.element.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 
-		Wield.Dom.prototype.wrap( fixture.element, wrapper );
+		Wield.Methods.dom.wrap( fixture.element, wrapper );
 
 		equal( fixture.element.parentNode.id, "wrapper", "the fixture is wrapped" );
 	});

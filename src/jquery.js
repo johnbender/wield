@@ -1,15 +1,15 @@
 //>>excludeStart("exclude", pragmas.exclude);
 define( "wield.jquery", ["core"], function() {
-	require( ["dom"],function() {
-		require( ["methods/methods"], function() {
+		require( ["methods"], function( methods ) {
+			require( ["methods/all"], function() {
 //>>excludeEnd("exclude");
-			/*global jQuery, dom*/
+			/*global jQuery, methods*/
 
 			// move Wield's html as it's read only
-			dom.getHtml = dom.html;
-			dom.html = undefined;
+			methods.dom.getHtml = methods.dom.html;
+			methods.dom.html = undefined;
 
-			jQuery.dom = jQuery.extend( jQuery.dom, dom );
+			jQuery.methods.dom = jQuery.extend( jQuery.dom, methods.dom );
 //>>excludeStart("exclude", pragmas.exclude);
 		});
 	});

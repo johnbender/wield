@@ -1,16 +1,13 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "wield.dom" ], function( dom ) {
+define([ "methods" ], function( methods ) {
 //>>excludeEnd("exclude");
 
-	dom.remove = function( remove ) {
-		// NOTE see readme about invocation patterns
-		var e = remove ? remove : this._e;
-
+	methods.dom.remove = function( e ) {
 		if ( e.parentNode ) {
 			e.parentNode.removeChild( e );
 		}
 
-		return this;
+		return e;
 	};
 
 //>>excludeStart("exclude", pragmas.exclude);

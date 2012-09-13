@@ -1,11 +1,10 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "wield.dom" ], function( dom ) {
+define([ "methods" ], function( methods ) {
 //>>excludeEnd("exclude");
 
-	dom.attr = function( el, name, value ) {
+	methods.dom.attr = function( elem, name, value ) {
 		// NOTE see readme about invocation patterns
-		var elem = this._e ? (value = name, name = el, this._e) : el,
-			nodeType = elem.nodeType, ret;
+		var nodeType = elem.nodeType, ret;
 
 		// don't get/set attributes on text, comment and attribute nodes
 		if ( !elem || nodeType === 3 || nodeType === 8 || nodeType === 2 ) {
@@ -14,7 +13,7 @@ define([ "wield.dom" ], function( dom ) {
 
 		// Fallback to prop when attributes are not supported
 		if ( typeof elem.getAttribute === "undefined" ) {
-			return dom.prop( elem, name, value );
+			return methods.dom.prop( elem, name, value );
 		}
 
 		if ( value ) {

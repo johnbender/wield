@@ -1,14 +1,11 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "wield.dom" ], function( dom ) {
+define( "methods/after", [ "methods" ], function( methods ) {
 //>>excludeEnd("exclude");
 
-	dom.after = function( el, add ) {
-		// NOTE see readme about invocation patterns
-		var e = add ? el : (add = dom.toElem(el), this._e);
-
+	methods.dom.after = function( e, add ) {
 		e.parentNode.insertBefore( add, e.nextSibling );
 
-		return this;
+		return e;
 	};
 
 //>>excludeStart("exclude", pragmas.exclude);
