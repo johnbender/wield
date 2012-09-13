@@ -6,7 +6,7 @@ define([ "methods" ], function( methods ) {
 	//      strings. It seems all together too likely that anyone
 	//      who might use this library would be knowledgeable enough
 	//      to manage creating and appending elements appropriately
-	methods.dom.html = function( e ) {
+	methods.html = function( e ) {
 		// getting the html value
 		return e.nodeType === 1 ? e.innerHTML : undefined;
 	};

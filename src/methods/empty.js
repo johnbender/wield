@@ -2,7 +2,7 @@
 define([ "methods" ], function( methods ) {
 //>>excludeEnd("exclude");
 
-	methods.dom.empty = function( element ) {
+	methods.empty = function( element ) {
 		// Remove any remaining nodes
 		while ( element.firstChild ) {
 			element.removeChild( element.firstChild );

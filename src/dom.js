@@ -13,11 +13,11 @@ define( "dom", [ "core", "methods", "methods/all" ], function( Wield, methods ) 
 	};
 
 	function defineMethod( name, make ) {
-		dom[ name ] = make( methods.dom[name] );
+		dom[ name ] = make( methods[name] );
 	}
 
-	for( method in methods.dom ) {
-		fn = methods.dom[method];
+	for( method in methods ) {
+		fn = methods[method];
 
 		if( fn.length === 1 ) {
 			defineMethod( method, function(fn) {
@@ -40,22 +40,22 @@ define( "dom", [ "core", "methods", "methods/all" ], function( Wield, methods ) 
 
 	// TODO try to minimize the size impact here
 	dom.text = function( value ) {
-		var ret = methods.dom.text( this._e, dom.toElem(value) );
+		var ret = methods.text( this._e, dom.toElem(value) );
 		return value !== undefined ? this : ret;
 	};
 
 	dom.html = function( value ) {
-		var ret = methods.dom.html( this._e, dom.toElem(value) );
+		var ret = methods.html( this._e, dom.toElem(value) );
 		return value !== undefined ? this : ret;
 	};
 
 	dom.prop = function( name, value ) {
-		var ret = methods.dom.prop( this._e, name, value );
+		var ret = methods.prop( this._e, name, value );
 		return value !== undefined ? this : ret;
 	};
 
 	dom.attr = function( name, value ) {
-		var ret = methods.dom.attr( this._e, name, value );
+		var ret = methods.attr( this._e, name, value );
 		return value !== undefined ? this : ret;
 	};
 

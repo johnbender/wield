@@ -2,7 +2,7 @@
 define([ "methods" ], function( methods ) {
 //>>excludeEnd("exclude");
 
-	methods.dom.prop = function( elem, name, value ) {
+	methods.prop = function( elem, name, value ) {
 		// NOTE see readme about invocation patterns
 		var nodeType = elem.nodeType, ret;
 

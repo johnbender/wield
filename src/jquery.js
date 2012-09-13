@@ -6,10 +6,10 @@ define( "wield.jquery", ["core"], function() {
 			/*global jQuery, methods*/
 
 			// move Wield's html as it's read only
-			methods.dom.getHtml = methods.dom.html;
-			methods.dom.html = undefined;
+			methods.getHtml = methods.html;
+			methods.html = undefined;
 
-			jQuery.dom = jQuery.extend( jQuery.dom, methods.dom );
+			jQuery.dom = jQuery.extend( jQuery.dom, methods );
 //>>excludeStart("exclude", pragmas.exclude);
 		});
 	});

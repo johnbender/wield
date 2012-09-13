@@ -2,10 +2,10 @@
 define([ "methods", "methods/append", "methods/before"], function( methods ) {
 //>>excludeEnd("exclude");
 
-	methods.dom.wrap = function( e, add ) {
+	methods.wrap = function( e, add ) {
 		// put the wrapper in the DOM just before the element to be wrapped
 		if( e.parentNode ) {
-			methods.dom.before( e, add );
+			methods.before( e, add );
 		}
 
 		// get innermost child element of the wrapper
@@ -14,7 +14,7 @@ define([ "methods", "methods/append", "methods/before"], function( methods ) {
 		}
 
 		// append the element to the innermost child of the wrapper
-		methods.dom.append( add, e );
+		methods.append( add, e );
 
 		return e;
 	};

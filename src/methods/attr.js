@@ -2,7 +2,7 @@
 define([ "methods" ], function( methods ) {
 //>>excludeEnd("exclude");
 
-	methods.dom.attr = function( elem, name, value ) {
+	methods.attr = function( elem, name, value ) {
 		// NOTE see readme about invocation patterns
 		var nodeType = elem.nodeType, ret;
 
@@ -13,7 +13,7 @@ define([ "methods" ], function( methods ) {
 
 		// Fallback to prop when attributes are not supported
 		if ( typeof elem.getAttribute === "undefined" ) {
-			return methods.dom.prop( elem, name, value );
+			return methods.prop( elem, name, value );
 		}
 
 		if ( value ) {
