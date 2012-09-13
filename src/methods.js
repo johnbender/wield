@@ -5,9 +5,6 @@ define( "methods", [ "core" ], function( Wield ) {
   // Define the method argument count registry for
   // the definition of methods on Wield.Dom
 	var methods = Wield.Methods = {
-		single: [],
-		double: [],
-		triple: [],
 		dom: {}
 	};
 

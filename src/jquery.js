@@ -9,7 +9,7 @@ define( "wield.jquery", ["core"], function() {
 			methods.dom.getHtml = methods.dom.html;
 			methods.dom.html = undefined;
 
-			jQuery.methods.dom = jQuery.extend( jQuery.dom, methods.dom );
+			jQuery.dom = jQuery.extend( jQuery.dom, methods.dom );
 //>>excludeStart("exclude", pragmas.exclude);
 		});
 	});
