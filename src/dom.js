@@ -26,7 +26,9 @@ define( "dom", [ "core", "methods", "methods/all" ], function( Wield, methods ) 
 					return this;
 				};
 			});
-		} else if( fn.length === 2 ) {
+		}
+
+		if( fn.length === 2 ) {
 			defineMethod( method, function( fn ) {
 				return function( first ) {
 					fn( this._e, dom.toElem(first) );
@@ -36,6 +38,7 @@ define( "dom", [ "core", "methods", "methods/all" ], function( Wield, methods ) 
 		}
 	}
 
+	// TODO try to minimize the size impact here
 	dom.text = function( value ) {
 		var ret = methods.dom.text( this._e, dom.toElem(value) );
 		return value !== undefined ? this : ret;
