@@ -85,6 +85,42 @@
 		equal( fixture.childNodes.length, 1, "the fixture has one child" );
 	});
 
+	module( "Wield.Dom.prototype.attr" );
+
+	test( "attr works", function() {
+		var fixture = new Wield.Dom( document.getElementById("attr") );
+
+		equal( fixture.attr( 'data-foo' ), undefined, "attr returns undefined before data-foo is set" );
+		equal( fixture.attr( 'data-foo', true ), "true", "the value is returned" );
+		equal( fixture.attr( 'data-foo' ), "true", "attr returns true after data-foo is set" );
+		equal( fixture.element.getAttribute( 'data-foo' ), "true", "attr returns true after data-foo is set" );
+	});
+
+	test( "attr works as a standalone function", function() {
+		var fixture = document.getElementById("attr");
+
+		equal( Wield.Dom.prototype.attr(fixture, 'data-foo'), undefined, "attr returns undefined before data-foo is set" );
+		equal( Wield.Dom.prototype.attr(fixture, 'data-foo', true), "true", "the value is returned" );
+		equal( Wield.Dom.prototype.attr(fixture, 'data-foo'), "true", "attr returns true after data-foo is set" );
+		equal( fixture.getAttribute("data-foo"), "true", "attr returns true after data-foo is set" );
+	});
+
+	test( "attr defaults to prop call when getAttribute is not defined", function() {
+		var prop = Wield.Dom.prototype.prop,
+			e = { nodeType: 1 }, name = "foo", value = "bar";
+
+		expect( 3 );
+
+		Wield.Dom.prototype.prop = function( elem, passedName, passedValue ) {
+			equal( elem, e, "object is the same" );
+			equal( passedName, name, "name is the same" );
+			equal( passedValue, value, "value is the same" );
+		};
+
+		Wield.Dom.prototype.attr( e, name, value );
+
+		Wield.Dom.prototype.prop = prop;
+	});
 
 	module( "Wield.Dom.prototype.before" );
 
@@ -183,6 +219,26 @@
 		var fixture = document.getElementById("html");
 
 		equal( Wield.Dom.prototype.html( fixture ), "foo", "the html is returned" );
+	});
+
+	module( "Wield.Dom.prototype.prop" );
+
+	test( "prop works", function() {
+		var fixture = new Wield.Dom( document.getElementById("prop") );
+
+		equal( fixture.prop( 'checked' ), true, "prop returns true before checked is set" );
+		equal( fixture.prop( 'checked', false ), false, "the value is returned" );
+		equal( fixture.prop( 'checked' ), false, "prop returns true after checked is set" );
+		equal( fixture.element.checked, false, "prop returns true after checked is set" );
+	});
+
+	test( "prop works as a standalone function", function() {
+		var fixture = document.getElementById("prop");
+
+		equal( Wield.Dom.prototype.prop( fixture, 'checked' ), true, "prop returns false before checked is set" );
+		equal( Wield.Dom.prototype.prop( fixture, 'checked', false ), false, "the value is returned" );
+		equal( Wield.Dom.prototype.prop( fixture, 'checked' ), false, "prop returns true after checked is set" );
+		equal( fixture.checked, false, "prop returns true after checked is set" );
 	});
 
 	module( "Wield.Dom.prototype.remove" );
