@@ -2,6 +2,8 @@
 define([ "methods" ], function( methods ) {
 //>>excludeEnd("exclude");
 
+	// NOTE xml documents not supported, downcasing attributes
+	//      also not supported
 	methods.attr = function( elem, name, value ) {
 		// NOTE see readme about invocation patterns
 		var nodeType = elem.nodeType, ret;
@@ -16,10 +18,10 @@ define([ "methods" ], function( methods ) {
 			return methods.prop( elem, name, value );
 		}
 
-		if ( value ) {
+		if ( value !== undefined ) {
 			// using string coercion for fewer bytes :/
 			elem.setAttribute( name, "" + value );
-			return "" + value;
+			return value;
 		} else {
 			ret = elem.getAttribute( name );
 
