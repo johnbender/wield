@@ -51,7 +51,7 @@ fixture.remove();
 
 // or ...
 
-Wield.Dom.prototype.remove( document.getElementById("foo") );
+Wield.Methods.remove( document.getElementById("foo") );
 ```
 
 For methods that accept at least one argument, `Wield.Dom` methods will accept either DOM or `Wield.Dom` objects when invoked with an object receiver and DOM elements when invoked as a function.
@@ -67,7 +67,7 @@ fixture.append( new Wield.Dom(document.createElement("span")) );
 
 // or ...
 
-Wield.Dom.prototype.append(
+Wield.Methods.append(
   document.getElementById("foo"),
   document.createElement("span")
 );

@@ -1,5 +1,5 @@
 (function( Wield ) {
-	module( "Wield.Dom.prototype.after" );
+	module( "Wield.Methods.after" );
 
 	test( "after works", function() {
 		var fixture = new Wield.Dom( document.getElementById("after") ),
@@ -37,7 +37,7 @@
 		equal( span, fixture.parentNode.childNodes[1], "the span is the second child" );
 	});
 
-	module( "Wield.Dom.prototype.append" );
+	module( "Wield.Methods.append" );
 
 	test( "append works", function() {
 		var fixture = new Wield.Dom( document.getElementById("append") );
@@ -85,7 +85,7 @@
 		equal( fixture.childNodes.length, 1, "the fixture has one child" );
 	});
 
-	module( "Wield.Dom.prototype.attr" );
+	module( "Wield.Methods.attr" );
 
 	test( "attr works", function() {
 		var fixture = new Wield.Dom( document.getElementById("attr") );
@@ -122,7 +122,7 @@
 		Wield.Methods.prop = prop;
 	});
 
-	module( "Wield.Dom.prototype.before" );
+	module( "Wield.Methods.before" );
 
 	test( "before works", function() {
 		var fixture = new Wield.Dom( document.getElementById("before") ),
@@ -160,7 +160,7 @@
 		equal( span, fixture.parentNode.childNodes[0], "the span is the second child" );
 	});
 
-	module( "Wield.Dom.prototype.empty" );
+	module( "Wield.Methods.empty" );
 
 	test( "empty works", function() {
 		var fixture = new Wield.Dom( document.getElementById("empty") );
@@ -207,7 +207,7 @@
 		});
 	});
 
-	module( "Wield.Dom.prototype.html" );
+	module( "Wield.Methods.html" );
 
 	test( "html works", function() {
 		var fixture = new Wield.Dom( document.getElementById("html") );
@@ -221,7 +221,7 @@
 		equal( Wield.Methods.html( fixture ), "foo", "the html is returned" );
 	});
 
-	module( "Wield.Dom.prototype.prop" );
+	module( "Wield.Methods.prop" );
 
 	test( "prop works", function() {
 		var fixture = new Wield.Dom( document.getElementById("prop") );
@@ -251,7 +251,7 @@
 		equal( fixture.tabIndex, "1", "value has been set" );
 	});
 
-	module( "Wield.Dom.prototype.remove" );
+	module( "Wield.Methods.remove" );
 
 	test( "remove works", function() {
 		var fixture = new Wield.Dom( document.getElementById("remove") );
@@ -285,7 +285,7 @@
 		fixture.remove();
 	});
 
-	module( "Wield.Dom.prototype.replaceWith" );
+	module( "Wield.Methods.replaceWith" );
 
 	test( "replaceWith works", function() {
 		var fixture = new Wield.Dom( document.getElementById("replace") ),
@@ -315,7 +315,7 @@
 		ok( document.getElementById("replacement") !== null, "the replacement is present" );
 	});
 
-	module( "Wield.Dom.prototype.text" );
+	module( "Wield.Methods.text" );
 
 	test( "text works", function() {
 		var fixture = new Wield.Dom( document.getElementById("text") );
@@ -370,7 +370,7 @@
 		equal( fixture.text(), "fiz", "the new text is returned" );
 	});
 
-	module( "Wield.Dom.prototype.unwrap" );
+	module( "Wield.Methods.unwrap" );
 
 	test( "unwrap works", function() {
 		var fixture = new Wield.Dom( document.getElementById("unwrap") ),
@@ -394,7 +394,7 @@
 		equal( wrapped.parentNode.id, "qunit-fixture", "the fixture isn't wrapped" );
 	});
 
-	module( "Wield.Dom.prototype.wrap" );
+	module( "Wield.Methods.wrap" );
 
 	test( "wrap works", function() {
 		var fixture = new Wield.Dom( document.getElementById("wrap") ),
