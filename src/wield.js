@@ -3,7 +3,7 @@
 define( "wield", ["core"], function() {
 	require(["methods"], function() {
 		require(["methods/all"], function() {
-			require([ "dom", "find" ]);
+			require([ "dom", "find", "methods/misc" ]);
 		});
 	});
 });

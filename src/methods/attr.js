@@ -1,12 +1,11 @@
 //>>excludeStart("exclude", pragmas.exclude);
 define([ "methods" ], function( methods ) {
 //>>excludeEnd("exclude");
-
 	// NOTE xml documents not supported, downcasing attributes
 	//      also not supported
 	methods.attr = function( elem, name, value ) {
 		// NOTE see readme about invocation patterns
-		var nodeType = elem.nodeType, ret;
+		var nodeType = elem.nodeType, ret, fix = methods.attr.fix;
 
 		// don't get/set attributes on text, comment and attribute nodes
 		if ( !elem || nodeType === 3 || nodeType === 8 || nodeType === 2 ) {

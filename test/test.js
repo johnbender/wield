@@ -100,7 +100,7 @@
 		var fixture = document.getElementById("attr");
 
 		equal( Wield.Methods.attr(fixture, 'data-foo'), undefined, "attr returns undefined before data-foo is set" );
-		equal( Wield.Methods.attr(fixture, 'data-foo', true), "true", "the value is returned" );
+		equal( Wield.Methods.attr(fixture, 'data-foo', true), true, "the value is returned" );
 		equal( Wield.Methods.attr(fixture, 'data-foo'), "true", "attr returns true after data-foo is set" );
 		equal( fixture.getAttribute("data-foo"), "true", "attr returns true after data-foo is set" );
 	});
@@ -239,6 +239,16 @@
 		equal( Wield.Methods.prop( fixture, 'checked', false ), false, "the value is returned" );
 		equal( Wield.Methods.prop( fixture, 'checked' ), false, "prop returns true after checked is set" );
 		equal( fixture.checked, false, "prop returns true after checked is set" );
+	});
+
+	test( "prop fixes the attribute name where appropriate", function() {
+		var fixture = document.getElementById("prop");
+
+		equal( fixture.tabIndex, "0", "value has been set" );
+
+		Wield.Methods.prop( fixture, "tabindex", 1 );
+
+		equal( fixture.tabIndex, "1", "value has been set" );
 	});
 
 	module( "Wield.Dom.prototype.remove" );
