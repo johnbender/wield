@@ -4,9 +4,7 @@ define( "methods", [ "core" ], function( Wield ) {
 
   // Define the method argument count registry for
   // the definition of methods on Wield.Dom
-	var methods = Wield.Methods = {
-		dom: {}
-	};
+	var methods = Wield.Methods = {};
 
 //>>excludeStart("exclude", pragmas.exclude);
   return Wield.Methods;

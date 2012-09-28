@@ -2,6 +2,7 @@
 define( "all", function() {
 	require( ["methods"], function() {
 		require( [
+			"methods/addclass",
 			"methods/after",
 			"methods/append",
 			"methods/attr",
@@ -11,6 +12,7 @@ define( "all", function() {
 			"methods/prop",
 			"methods/remove",
 			"methods/text",
+			"methods/trim",
 			"methods/replacewith",
 			"methods/unwrap",
 			"methods/wrap" ], function() {});
