@@ -14,40 +14,12 @@
   <script src="../vendor/qunit/qunit.js"></script>
 
   <!-- Load local lib and tests. -->
-  <script type="text/javascript">
-    QUnit.config.autostart = false;
-
-    require({ baseUrl: "../src/" });
-
-requirejs.config({
-  shim: {
-		'test.js': [
-			"wield",
-			"methods",
-			"methods/after",
-			"methods/append",
-			"methods/attr",
-			"methods/before",
-			"methods/empty",
-			"methods/html",
-			"methods/prop",
-			"methods/remove",
-			"methods/text",
-			"methods/replacewith",
-			"methods/unwrap",
-			"methods/wrap",
-			"dom",
-			"find"
-    ]
-	}
-});
-
-    require( ["test.js"], QUnit.start );
-  </script>
+  <script type="text/javascript" src="load.js"></script>
 </head>
 <body>
   <div id="qunit"></div>
   <div id="qunit-fixture">
+    <div id="addclass"></div>
     <div><div id="after"></div></div>
     <div id="append"></div>
     <div><div id="before"></div></div>

@@ -1,4 +1,16 @@
 (function( Wield ) {
+	module( "Wield.Methods.addClass" );
+
+	test( "addClass works", function() {
+		var fixture = new Wield.Dom( document.getElementById("addclass") );
+
+		equal( fixture.element.className, "", "the fixture has no class value" );
+
+		deepEqual( fixture, fixture.addClass( "foo" ), "addClass is chainable" );
+
+		equal( fixture.element.getAttribute( "class" ), "foo", "the fixture has a class value of foo" );
+	});
+
 	module( "Wield.Methods.after" );
 
 	test( "after works", function() {
