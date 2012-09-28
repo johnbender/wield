@@ -19,13 +19,23 @@ module.exports = function(grunt) {
 			dist: {
 				src: ['<banner:meta.banner>', 'compiled/wield.compiled.js' ],
 				dest: 'compiled/wield.js'
+			},
+
+			jquery: {
+				src: ['<banner:meta.banner>', 'compiled/wield.compiled.jquery.js' ],
+				dest: 'compiled/wield.jquery.js'
 			}
 		},
 
 		min: {
 			dist: {
-				src: ['<banner:meta.banner>', '<config:concat.dist.dest>', 'compiled/wield.js'],
+				src: ['<config:concat.dist.dest>'],
 				dest: 'compiled/<%= pkg.name %>.min.js'
+			},
+
+			jquery: {
+				src: ['<config:concat.jquery.dest>'],
+				dest: 'compiled/<%= pkg.name %>.jquery.min.js'
 			}
 		},
 
@@ -39,7 +49,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			files: '<config:lint.files>',
-			tasks: 'lint qunit'
+			tasks: 'build'
 		},
 
 		jshint: {
@@ -81,7 +91,7 @@ module.exports = function(grunt) {
 			jquery: {
 				baseUrl: 'src',
 				name: 'jquery',
-				out: 'compiled/wield.jquery.js',
+				out: 'compiled/wield.compiled.jquery.js',
 				wrap: {
 					startFile: 'build/start.jquery.js',
 					endFile: 'build/end.jquery.js'
