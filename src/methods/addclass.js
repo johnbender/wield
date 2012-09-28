@@ -11,13 +11,10 @@ define([ "methods" ], function( methods ) {
 			} else {
 				setClass = " " + elem.className + " ";
 
-				for ( c = 0, cl = classNames.length; c < cl; c++ ) {
-					if ( !~setClass.indexOf( " " + classNames[ c ] + " " ) ) {
-						setClass += classNames[ c ] + " ";
-					}
+				if ( !~setClass.indexOf( " " + value + " " ) ) {
+					setClass += value + " ";
 				}
 
-				// elem.className = jQuery.trim( setClass );
 				elem.className = methods.trim(setClass);
 			}
 		}
