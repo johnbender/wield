@@ -13,6 +13,7 @@ define( "all", function() {
 			"methods/remove",
 			"methods/text",
 			"methods/trim",
+			"methods/removeclass",
 			"methods/replacewith",
 			"methods/unwrap",
 			"methods/wrap" ], function() {});
