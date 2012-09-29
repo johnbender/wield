@@ -297,6 +297,18 @@
 		fixture.remove();
 	});
 
+	module( "Wield.Methods.removeClass" );
+
+	test( "removeClass works", function() {
+		var fixture = new Wield.Dom( document.getElementById("removeclass") );
+
+		equal( fixture.element.className, "foo", "the fixture has an initial class value" );
+
+		deepEqual( fixture, fixture.removeClass( "foo" ), "removeClass is chainable" );
+
+		equal( fixture.element.getAttribute( "class" ), "", "the fixture has no class value" );
+	});
+
 	module( "Wield.Methods.replaceWith" );
 
 	test( "replaceWith works", function() {

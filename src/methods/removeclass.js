@@ -1,5 +1,5 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "methods" ], function( methods ) {
+define([ "methods", "methods/trim" ], function( methods ) {
 //>>excludeEnd("exclude");
 	var rclass = /[\t\r\n]/g;
 
