@@ -1,5 +1,5 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "methods", "methods/prop.fix" ], function( methods ) {
+define([ "methods", "methods/prop" ], function( methods ) {
 //>>excludeEnd("exclude");
 
 	methods.prop.fix = {

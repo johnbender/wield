@@ -1,5 +1,5 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "methods", "methods/prop.fix" ], function( methods ) {
+define(["methods", "methods/prop.fix" ], function( methods ) {
 //>>excludeEnd("exclude");
 	var rboolean = /^(?:autofocus|autoplay|async|checked|controls|defer|disabled|hidden|loop|multiple|open|readonly|required|scoped|selected)$/i, getSetAttribute;
 

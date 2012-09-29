@@ -17,6 +17,7 @@ requirejs.config({
 			"methods/prop",
 			"methods/remove",
 			"methods/text",
+			"methods/removeattr",
 			"methods/removeclass",
 			"methods/replacewith",
 			"methods/unwrap",
