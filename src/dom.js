@@ -6,7 +6,7 @@ define([ "core", "methods", "methods/all" ], function( Wield, methods ) {
 		this._e = this.element = element;
 	};
 
-	var dom = Wield.Dom.prototype = {}, l, fn, directReturn, exceptions;
+	var dom = Wield.Dom.prototype = {}, l, fn, directReturn, exceptions, stringReturns;
 
 	dom.toElem = function( add ) {
 		return add && add._e ? add._e : add;
@@ -38,26 +38,18 @@ define([ "core", "methods", "methods/all" ], function( Wield, methods ) {
 		}
 	}
 
-	// TODO try to minimize the size impact here
-	dom.text = function( value ) {
-		var ret = methods.text( this._e, dom.toElem(value) );
-		return value !== undefined ? this : ret;
-	};
+	stringReturns = [ "text", "html", "prop", "attr" ];
 
-	dom.html = function( value ) {
-		var ret = methods.html( this._e, dom.toElem(value) );
-		return value !== undefined ? this : ret;
-	};
+	l = stringReturns.length;
 
-	dom.prop = function( name, value ) {
-		var ret = methods.prop( this._e, name, value );
-		return value !== undefined ? this : ret;
-	};
-
-	dom.attr = function( name, value ) {
-		var ret = methods.attr( this._e, name, value );
-		return value !== undefined ? this : ret;
-	};
+	while( l-- ) {
+		defineMethod( stringReturns[l], function( fn ) {
+			return function( name, value ) {
+				var ret = fn( this._e, dom.toElem(name), value );
+				return value !== undefined ? this : ret;
+			};
+		});
+	}
 
 //>>excludeStart("exclude", pragmas.exclude);
 	// TODO not a fan of excluding the return with a pragma
