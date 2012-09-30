@@ -15,6 +15,7 @@ define( "all", function() {
 			"methods/trim",
 			"methods/removeattr",
 			"methods/removeclass",
+			"methods/removeprop",
 			"methods/replacewith",
 			"methods/unwrap",
 			"methods/wrap" ], function() {});
