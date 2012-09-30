@@ -4,7 +4,7 @@ define([ "methods" ], function( methods ) {
 
 	methods.prop = function( elem, name, value ) {
 		// NOTE see readme about invocation patterns
-		var nodeType = elem.nodeType, ret, fix = methods.prop.fix || {};
+		var nodeType = elem.nodeType, ret;
 
 		// don't get/set properties on text, comment and attribute nodes
 		if ( !elem || nodeType === 3 || nodeType === 8 || nodeType === 2 ) {
@@ -16,7 +16,7 @@ define([ "methods" ], function( methods ) {
 		// is to fix the property names for non jQuery builds
 		// and to just use the name for jquery builds since
 		// this is already taken care inside jQuery
-		name = fix[ name ] || name;
+		name = methods.prop.fix[ name ] || name;
 
 		if ( value !== undefined ) {
 			return elem[ name ] = value;
@@ -24,6 +24,8 @@ define([ "methods" ], function( methods ) {
 			return elem[ name ];
 		}
 	};
+
+	methods.prop.fix = {};
 
 //>>excludeStart("exclude", pragmas.exclude);
 });

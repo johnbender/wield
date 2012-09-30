@@ -1,5 +1,5 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define( "methods/after", [ "methods" ], function( methods ) {
+define([ "methods" ], function( methods ) {
 //>>excludeEnd("exclude");
 
 	methods.after = function( e, add ) {

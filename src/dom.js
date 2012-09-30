@@ -1,5 +1,5 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define( "dom", [ "core", "methods", "methods/all" ], function( Wield, methods ) {
+define([ "core", "methods", "methods/all" ], function( Wield, methods ) {
 //>>excludeEnd("exclude");
 
 	Wield.Dom = function Dom( element ){

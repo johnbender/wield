@@ -1,12 +1,12 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define( "methods", [ "core" ], function( Wield ) {
+define([ "core" ], function( Wield ) {
 //>>excludeEnd("exclude");
 
-  // Define the method argument count registry for
-  // the definition of methods on Wield.Dom
+	// Define the method argument count registry for
+	// the definition of methods on Wield.Dom
 	var methods = Wield.Methods = {};
 
 //>>excludeStart("exclude", pragmas.exclude);
-  return Wield.Methods;
+	return Wield.Methods;
 });
 //>>excludeEnd("exclude");

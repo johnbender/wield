@@ -1,5 +1,5 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define( "core", [], function() {
+define(function() {
 //>>excludeEnd("exclude");
 
 	var Wield = window.Wield = {};

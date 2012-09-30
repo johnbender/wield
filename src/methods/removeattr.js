@@ -15,11 +15,10 @@ define(["methods", "methods/prop.fix" ], function( methods ) {
 	})();
 
 	methods.removeAttr = function( elem, value ) {
-		var propName, attrNames, name = value, isBool,
-			i = 0, fix = methods.prop.fix || {};
+		var propName, attrNames, name = value, isBool, i = 0;
 
 		if ( value && elem.nodeType === 1 ) {
-			propName = fix[ name ] || name;
+			propName = methods.prop.fix[ name ] || name;
 			isBool = rboolean.test( name );
 
 			// See #9699 for explanation of this approach (setting first, then removal)

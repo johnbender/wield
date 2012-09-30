@@ -3,10 +3,8 @@ define( ["methods"], function( methods ) {
 //>>excludeEnd("exclude");
 
 	methods.removeProp = function( elem, name ) {
-		var fix = methods.prop.fix || {};
-
 		// fix the name where it's necessary
-		name = fix[ name ] || name;
+		name = methods.prop.fix[ name ] || name;
 
 		// TODO consider handling this directly or reporting it
 		// try/catch handles cases where IE balks
