@@ -117,23 +117,6 @@
 		equal( fixture.getAttribute("data-foo"), "true", "attr returns true after data-foo is set" );
 	});
 
-	test( "attr defaults to prop call when getAttribute is not defined", function() {
-		var prop = Wield.Methods.prop,
-			e = { nodeType: 1 }, name = "foo", value = "bar";
-
-		expect( 3 );
-
-		Wield.Methods.prop = function( elem, passedName, passedValue ) {
-			equal( elem, e, "object is the same" );
-			equal( passedName, name, "name is the same" );
-			equal( passedValue, value, "value is the same" );
-		};
-
-		Wield.Methods.attr( e, name, value );
-
-		Wield.Methods.prop = prop;
-	});
-
 	module( "Wield.Methods.before" );
 
 	test( "before works", function() {
