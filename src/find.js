@@ -15,7 +15,7 @@ define([ "dom" ], function( dom ) {
 	};
 
 	// Default to query selector where it exists
-	if( document.querySelector && !Wield.Dom.finder ){
+	if( document.querySelector && !dom.finder ){
 		dom.finder = function( selector ) {
 			return document.querySelector( selector );
 		};
