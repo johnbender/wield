@@ -321,6 +321,20 @@
 		equal( fixture.element.getAttribute( "class" ), "", "the fixture has no class value" );
 	});
 
+	module( "Wield.Methods.removeProp" );
+
+	test( "removeProp works", function() {
+		var fixture = new Wield.Dom( document.getElementById("removeclass") );
+
+		fixture.element.foo = "bar";
+
+		equal( fixture.element.foo, "bar", "the fixture has an initial class value" );
+
+		deepEqual( fixture, fixture.removeProp( "foo" ), "removeProp is chainable" );
+
+		equal( fixture.element.foo, undefined, "the fixture has no class value" );
+	});
+
 	module( "Wield.Methods.replaceWith" );
 
 	test( "replaceWith works", function() {
