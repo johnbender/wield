@@ -1,14 +1,14 @@
 //>>excludeStart("exclude", pragmas.exclude);
-define([ "dom" ], function() {
+define([ "dom" ], function( dom ) {
 //>>excludeEnd("exclude");
 
-	Wield.Dom.find = function( selector ) {
+	dom.find = function( selector ) {
 		// If a finder has been defined on Wield.Dom
 		// use it with the selector or throw and exception
-		if( Wield.Dom.finder ){
+		if( dom.finder ){
 			// construct a new Wield.Dom object using the element
 			// retrieved with the selector
-			return new Wield.Dom( Wield.Dom.finder(selector) );
+			return new dom( dom.finder(selector) );
 		} else {
 			throw "Wield.Dom.finder not defined";
 		}
@@ -16,7 +16,7 @@ define([ "dom" ], function() {
 
 	// Default to query selector where it exists
 	if( document.querySelector && !Wield.Dom.finder ){
-		Wield.Dom.finder = function( selector ) {
+		dom.finder = function( selector ) {
 			return document.querySelector( selector );
 		};
 	}

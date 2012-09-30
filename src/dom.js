@@ -70,6 +70,6 @@ define([ "core", "methods", "methods/all" ], function( Wield, methods ) {
 
 //>>excludeStart("exclude", pragmas.exclude);
 	// TODO not a fan of excluding the return with a pragma
-	return dom;
+	return Wield.Dom;
 });
 //>>excludeEnd("exclude");
