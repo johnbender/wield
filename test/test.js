@@ -97,6 +97,45 @@
 		equal( fixture.childNodes.length, 1, "the fixture has one child" );
 	});
 
+	module( "Wield.Methods.appendTo" );
+
+	test( "appendTo works", function() {
+		var append = new Wield.Dom( document.createElement("div") ),
+			fixture = new Wield.Dom( document.getElementById("appendTo") );
+
+		equal( fixture.element.childNodes.length, 0, "the fixture is empty" );
+
+		deepEqual( append, append.appendTo( fixture.element ), "method is chainable" );
+
+		equal( fixture.element.childNodes.length, 1, "the fixture has one child" );
+	});
+
+	test( "appendTo with object receiver works with wield objects", function() {
+		var append = new Wield.Dom( document.createElement("div") ),
+			fixture = new Wield.Dom( document.getElementById("appendTo") );
+
+		equal( fixture.element.childNodes.length, 0, "the fixture is empty" );
+
+		deepEqual( append, append.appendTo( fixture ), "method is chainable" );
+
+		equal( fixture.element.childNodes.length, 1, "the fixture has one child" );
+	});
+
+	test( "appendTo is a noop for anything not Node.ELEMENT_NODE || Node.DOCUMENT_FRAGMENT_NODE", function() {
+		expect( 0 );
+
+		var append = new Wield.Dom( document.createElement("span") );
+
+		var textNode = new Wield.Dom({
+			nodeType: Node.TEXT_NODE,
+			appendChild: function() {
+				ok( false, "appendChild was called" );
+			}
+		});
+
+		append.appendTo( textNode );
+	});
+
 	module( "Wield.Methods.attr" );
 
 	test( "attr works", function() {

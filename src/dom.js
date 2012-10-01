@@ -6,15 +6,15 @@ define([ "core", "methods", "methods/all" ], function( Wield, methods ) {
 		this._e = this.element = element;
 	};
 
-	var dom = Wield.Dom.prototype = {}, l, fn, directReturn, exceptions, stringReturns;
+	var dom = Wield.Dom.prototype = {}, l, fn, altRet;
 
 	dom.toElem = function( add ) {
 		return add && add._e ? add._e : add;
 	};
 
 	// We use a function to avoid the value capture issue
-	function defineMethod( name, make ) {
-		dom[ name ] = make( methods[name] );
+	function define( name, use, make ) {
+		dom[ name ] = make( methods[use] );
 	}
 
 	// NOTE for all the methods defined on out method object
@@ -27,11 +27,11 @@ define([ "core", "methods", "methods/all" ], function( Wield, methods ) {
 	//      Methods of length two take a second argument that
 	//      can either be a dom object or a wield wrapper of the
 	//      same.
-	for( method in methods ) {
-		fn = methods[method];
+	for( name in methods ) {
+		fn = methods[name];
 
 		if( fn.length === 1 ) {
-			defineMethod( method, function(fn) {
+			define( name, name, function(fn) {
 				return function() {
 					fn( this._e );
 					return this;
@@ -40,7 +40,7 @@ define([ "core", "methods", "methods/all" ], function( Wield, methods ) {
 		}
 
 		if( fn.length === 2 ) {
-			defineMethod( method, function( fn ) {
+			define( name, name, function( fn ) {
 				return function( first ) {
 					fn( this._e, dom.toElem(first) );
 					return this;
@@ -56,14 +56,34 @@ define([ "core", "methods", "methods/all" ], function( Wield, methods ) {
 	//      Because toElem ignores anything that's not
 	//      a wield object (checks for _e prop) that arg
 	//      can just as easily be as string (eg, text)
-	stringReturns = [ "text", "html", "prop", "attr" ];
-	l = stringReturns.length;
+	altRet = [ "text", "html", "prop", "attr" ];
+	l = altRet.length;
 
 	while( l-- ) {
-		defineMethod( stringReturns[l], function( fn ) {
+		define( altRet[l], altRet[l], function( fn ) {
 			return function( name, value ) {
 				var ret = fn( this._e, dom.toElem(name), value );
 				return value !== undefined ? this : ret;
+			};
+		});
+	}
+
+	dom._op = {
+		appendTo: "append",
+		prependTo: "prepend",
+		insertBefore: "before",
+		insertAfter: "after"
+	};
+
+	// NOTE the inverted functions are just an argument
+	//      swap. Really this is only necessary or valuable for
+	//      Wield.Dom since with the vanilla methods you can
+	//      simply swap the arguments :/
+	for( name in dom._op ) {
+		define( name, dom._op[name], function( fn ) {
+			return function( add ) {
+				fn( dom.toElem(add), this._e );
+				return this;
 			};
 		});
 	}
