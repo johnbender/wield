@@ -1,6 +1,8 @@
 //>>excludeStart("exclude", pragmas.exclude);
 define(["methods", "methods/prop.fix" ], function( methods ) {
 //>>excludeEnd("exclude");
+
+	// TODO exclude this in jQuery builds
 	var rboolean = /^(?:autofocus|autoplay|async|checked|controls|defer|disabled|hidden|loop|multiple|open|readonly|required|scoped|selected)$/i, getSetAttribute;
 
 	// make sure we don't get variable bleed in the builds
