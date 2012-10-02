@@ -6,8 +6,7 @@ define([ "core" ], function( Wield ) {
 		 The Wield.Methods object is the namespace under which the bulk of
 		 Wield's functionality is defined
 
-		 @class Wield.Methods
-		 @static
+		 @class Methods
 	 */
 	var methods = Wield.Methods = {};
 

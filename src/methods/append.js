@@ -17,7 +17,7 @@ define([ "methods" ], function( methods ) {
 	@param {HTMLElement} parent The element to append
 	@return {HTMLElement} The parent element
 	@method append
-	@for Wield.Methods
+	@for Methods
 	@static
 	*/
 	methods.append = function( element, add ) {

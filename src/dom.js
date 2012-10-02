@@ -2,6 +2,32 @@
 define([ "core", "methods", "methods/all" ], function( Wield, methods ) {
 //>>excludeEnd("exclude");
 
+	/**
+	Wield.Dom is a fluent wrapper around HTMLElements (ie, it allows method chaining
+	ala jQuery). All the static methods available on are available on the Wield.Dom prototype
+	and the only difference is that the first argument is wrapped by a Wield.Dom instance.
+
+	Example:
+
+	    var foo = new Wield.Dom( document.getElementById("foo") ),
+	        span = document.creatElement( "span" ),
+	        div = document.creatElement( "div" );
+
+	    foo.append( span ).append( div );
+
+	is equivelant to
+
+	    var foo = document.getElementById("foo"),
+	        span = document.creatElement( "span" ),
+	        div = document.creatElement( "div" );
+
+	    Wield.Dom.append(Wield.Dom.append( foo, span ), div);
+
+	@class Dom
+	@see Methods
+	@constructor
+	@param {HTMLElement} element The element on which to perform operations
+	 */
 	Wield.Dom = function Dom( element ){
 		this._e = this.element = element;
 	};

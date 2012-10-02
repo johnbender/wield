@@ -2,6 +2,9 @@
 define(function() {
 //>>excludeEnd("exclude");
 
+	/**
+	@module Wield
+	 */
 	var Wield = window.Wield = {};
 
 //>>excludeStart("exclude", pragmas.exclude);
