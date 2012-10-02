@@ -2,8 +2,13 @@
 define([ "core" ], function( Wield ) {
 //>>excludeEnd("exclude");
 
-	// Define the method argument count registry for
-	// the definition of methods on Wield.Dom
+	/**
+		 The Wield.Methods object is the namespace under which the bulk of
+		 Wield's functionality is defined
+
+		 @class Wield.Methods
+		 @static
+	 */
 	var methods = Wield.Methods = {};
 
 //>>excludeStart("exclude", pragmas.exclude);

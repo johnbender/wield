@@ -12,7 +12,8 @@
 
   "dependencies": {
     "grunt":  "0.3.x",
-    "requirejs": "1.0.8"
+    "requirejs": "1.0.8",
+    "grunt-contrib-yuidoc": "0.3.1"
   },
 
   "repository": {

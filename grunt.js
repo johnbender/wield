@@ -103,7 +103,19 @@ module.exports = function(grunt) {
 			}
 		},
 
-		uglify: {}
+		uglify: {},
+
+		yuidoc: {
+			compile: {
+				"name": "Wield",
+				"description": "A tiny object wrapper around the DOM, targetted at replacing the core of the manipulations found inside jQuery.",
+				"url": "http://projecturl.com/",
+				options: {
+					paths: "src/",
+					outdir: "docs/"
+				}
+			}
+		}
 	});
 
 	grunt.registerTask( 'compile', function() {
@@ -117,5 +129,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'build', 'compile concat min' );
 
 	// Default task.
-	grunt.registerTask('default', 'lint qunit concat min');
+	grunt.registerTask( 'default', 'lint qunit concat min' );
+
+	grunt.loadNpmTasks( 'grunt-contrib-yuidoc' );
 };
