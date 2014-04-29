@@ -133,7 +133,7 @@ There are few things that are yet to be decided about how the library should wor
 3. Are there other libraries that focus on replacing the browsers DOM manipulation API?
 4. Is there interest in the library by itself?
 
-## TODOs
+## TODO
 
 There are outstanding items of work that need to be put into place for the project to achieve it's goals:
 
